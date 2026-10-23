@@ -1,0 +1,627 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/22/2026 9:11:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-IO596P6A"
+  DTS:CreatorName="LAPTOP-IO596P6A\Juan"
+  DTS:DTSID="{BA3AFF4C-5910-494D-9D1A-A58DDC26908D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1000.7"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="StageProducto"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{F06477E9-EB8A-4F4F-A4A0-0BD14F71A2DD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{88992A1C-F3DE-4C2B-8254-360AF1208FFA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{96D9110F-4026-4E6B-A4A4-49ED711F0976}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{35F3A028-6FBC-4D42-B770-0C02496B0C9D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">[GCA].[StageProducto]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF StageProducto"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{45675589-A858-4342-91BE-2FD1D8DF0E9E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF StageProducto"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          autoAdjustBufferSize="true"
+          version="1">
+          <components>
+            <component
+              refId="Package\DF StageProducto\Origen de archivo plano"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Origen de archivo plano;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de archivo plano"
+              localeId="1033"
+              name="Origen de archivo plano"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si las columnas de longitud cero se tratan como NULL."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre de una columna de salida que contiene el nombre de archivo. Si no se especifica ningún nombre, no se genera ninguna columna de salida con el nombre de archivo."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF StageProducto\Origen de archivo plano.Connections[FlatFileConnection]"
+                  connectionManagerID="{2CEDD4A5-77E8-490D-B071-47E3C3B4072A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[FF Producto]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano]"
+                  name="Salida de origen de archivo plano">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[producto_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[producto_id]"
+                      length="20"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[producto_id]"
+                      name="producto_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[categoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[categoria]"
+                      length="40"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[categoria]"
+                      name="categoria"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[costo_unitario]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[costo_unitario]"
+                      length="20"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[costo_unitario]"
+                      name="costo_unitario"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[precio_lista]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[precio_lista]"
+                      length="20"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[precio_lista]"
+                      name="precio_lista"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[margen_objetivo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[margen_objetivo]"
+                      length="20"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[margen_objetivo]"
+                      name="margen_objetivo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[producto_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="producto_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[categoria]"
+                      dataType="wstr"
+                      length="40"
+                      name="categoria" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[costo_unitario]"
+                      dataType="wstr"
+                      length="20"
+                      name="costo_unitario" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[precio_lista]"
+                      dataType="wstr"
+                      length="20"
+                      name="precio_lista" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[margen_objetivo]"
+                      dataType="wstr"
+                      length="20"
+                      name="margen_objetivo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de archivo plano">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Columna de salida de error de origen de archivo plano"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      name="Columna de salida de error de origen de archivo plano" />
+                    <outputColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF StageProducto\StageProducto"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="StageProducto"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[GCA].[StageProducto]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF StageProducto\StageProducto.Connections[OleDbConnection]"
+                  connectionManagerID="{63ACD6B7-1E83-49B7-ABCF-D5B56AED4DE9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB STAGE_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].Columns[producto_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="producto_id"
+                      externalMetadataColumnId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[producto_id]"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[producto_id]" />
+                    <inputColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].Columns[categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="categoria"
+                      externalMetadataColumnId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[categoria]"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[categoria]" />
+                    <inputColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].Columns[costo_unitario]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="costo_unitario"
+                      externalMetadataColumnId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[costo_unitario]"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[costo_unitario]" />
+                    <inputColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].Columns[precio_lista]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="precio_lista"
+                      externalMetadataColumnId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_lista]"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[precio_lista]" />
+                    <inputColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].Columns[margen_objetivo]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="margen_objetivo"
+                      externalMetadataColumnId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[margen_objetivo]"
+                      lineageId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[margen_objetivo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[producto_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="producto_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[categoria]"
+                      dataType="wstr"
+                      length="40"
+                      name="categoria" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[costo_unitario]"
+                      dataType="wstr"
+                      length="20"
+                      name="costo_unitario" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[precio_lista]"
+                      dataType="wstr"
+                      length="20"
+                      name="precio_lista" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB].ExternalColumns[margen_objetivo]"
+                      dataType="wstr"
+                      length="20"
+                      name="margen_objetivo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF StageProducto\StageProducto.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageProducto\StageProducto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF StageProducto\StageProducto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF StageProducto\StageProducto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF StageProducto\StageProducto.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF StageProducto.Paths[Salida de origen de archivo plano]"
+              endId="Package\DF StageProducto\StageProducto.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de archivo plano"
+              startId="Package\DF StageProducto\Origen de archivo plano.Outputs[Salida de origen de archivo plano]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Get AuditKey"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{72054E14-C2F5-4E35-AC67-BDEF9B135D33}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Get AuditKey"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EBE8FE70-4E87-4D08-AA38-6649A2F98D77}"
+          SQLTask:SqlStatementSource="INSERT INTO [DIM_AUDIT]&#xA;           ([TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[SuccessfulProcessingInd])&#xA;     VALUES&#xA;           (@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@StartTime&#xA;           ,NULL&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,@RowCount&#xA;           ,NULL&#xA;           ,'N')&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Post RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{26821786-9D70-4C67-B4D6-69536778D611}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Post RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [GCA].[StageProducto]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Prior RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{C4EC6A47-AD57-46C0-B198-3BCCD5215A27}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Prior RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [GCA].[StageProducto]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{9EECCDCF-0D9D-4FBB-BE41-639F02B327E7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [GCA].[StageProducto];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update AuditDim"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{D7AEE233-28CE-4979-9643-BC0E4DE72CCA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update AuditDim"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EBE8FE70-4E87-4D08-AA38-6649A2F98D77}"
+          SQLTask:SqlStatementSource="UPDATE [DIM_AUDIT]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RowCount&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,SuccessfulProcessingInd='Y'&#xA;WHERE AuditKey = @AuditKey;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{4B591240-AA8B-481F-B2D7-92BCEAEE5256\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{4B591240-AA8B-481F-B2D7-92BCEAEE5256}"
+      DTS:From="Package\DF StageProducto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{4B591240-AA8B-481F-B2D7-92BCEAEE5256}"
+      DTS:To="Package\Task Post RowCnt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{5A704FE2-C356-4BBC-B16C-C47525DE47B9\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{5A704FE2-C356-4BBC-B16C-C47525DE47B9}"
+      DTS:From="Package\Task Prior RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{5A704FE2-C356-4BBC-B16C-C47525DE47B9}"
+      DTS:To="Package\Task Get AuditKey" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{62FFA27A-3EC3-4223-A399-F9894C2D45D9\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{62FFA27A-3EC3-4223-A399-F9894C2D45D9}"
+      DTS:From="Package\TRUNCATE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{62FFA27A-3EC3-4223-A399-F9894C2D45D9}"
+      DTS:To="Package\DF StageProducto" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{647CB588-F8A3-4F5B-BFBF-483606306C88\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{647CB588-F8A3-4F5B-BFBF-483606306C88}"
+      DTS:From="Package\Task Get AuditKey"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{647CB588-F8A3-4F5B-BFBF-483606306C88}"
+      DTS:To="Package\TRUNCATE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{7717538D-696B-4992-8EED-BEE351B267C9\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{7717538D-696B-4992-8EED-BEE351B267C9}"
+      DTS:From="Package\Task Post RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{7717538D-696B-4992-8EED-BEE351B267C9}"
+      DTS:To="Package\Update AuditDim" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

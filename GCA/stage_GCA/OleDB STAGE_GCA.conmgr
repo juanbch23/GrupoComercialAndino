@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="OleDB STAGE_GCA"
+  DTS:DTSID="{63ACD6B7-1E83-49B7-ABCF-D5B56AED4DE9}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-IO596P6A\DEV;Initial Catalog=STAGE_GCA;Provider=MSOLEDBSQL19;Integrated Security=SSPI;Use Encryption for Data=Optional;Trust Server Certificate=True;Application Name=SSIS-GCA;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

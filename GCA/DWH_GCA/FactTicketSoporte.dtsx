@@ -1,0 +1,1583 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/22/2026 9:12:28 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-IO596P6A"
+  DTS:CreatorName="LAPTOP-IO596P6A\Juan"
+  DTS:DTSID="{599032AF-D720-4397-A267-FF1FD3307628}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1000.7"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="FactTicketSoporte"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{22240714-D97B-4281-8D90-1BC11B6E4D0A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4A82E1FD-419E-42B4-B98E-BDE1F1A62173}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D34DA108-7740-42E9-A116-6583AF71E02A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BF853004-F1E8-4F82-923B-85B204E11734}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">[Comercial].[FactTicketSoporte]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FACT TICKET SOPORTE"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{1A56D7E8-1A27-4AEA-A072-9E014E1DE819}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FACT TICKET SOPORTE"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          autoAdjustBufferSize="true"
+          version="1">
+          <components>
+            <component
+              refId="Package\FACT TICKET SOPORTE\Columna derivada Motivo"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Columna derivada Motivo"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Inputs[Entrada de columna derivada].Columns[MotivoDescarte]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="MotivoDescarte"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]"
+                      dataType="wstr"
+                      description="Motivo del descarte"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]"
+                      name="Motivo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}) ? (DT_WSTR,200)"Llave sin coincidencia en una dimensión" : #{Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(MotivoDescarte) ? (DT_WSTR,200)"Llave sin coincidencia en una dimensión" : MotivoDescarte</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT TICKET SOPORTE\DimCliente"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="DimCliente"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ClienteKey], [ClienteID] FROM [Comercial].[DimCliente] WHERE [ClienteKey] &gt; 0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClienteKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ClienteID" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT TICKET SOPORTE\DimCliente.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT TICKET SOPORTE\DimCliente.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\DimCliente.Inputs[Entrada de búsqueda].Columns[cliente_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="cliente_id"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">ClienteID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\DimCliente.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]"
+                      name="ClienteKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">ClienteKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\DimCliente.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\DimCliente.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT TICKET SOPORTE\DimFecha (apertura)"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="DimFecha (apertura)"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [FechaKey] FROM [GENERICO].[DimFecha] WHERE [FechaKey] &gt; 0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="FechaKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Inputs[Entrada de búsqueda].Columns[FechaNum]"
+                      cachedDataType="i4"
+                      cachedName="FechaNum"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">FechaKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaAperturaKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaAperturaKey]"
+                      name="FechaAperturaKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">FechaKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT TICKET SOPORTE\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FACT TICKET SOPORTE\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\División condicional.Inputs[Entrada de división condicional].Columns[MotivoDescarte]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="MotivoDescarte"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\División condicional.Inputs[Entrada de división condicional].Columns[FechaAperturaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaAperturaKey"
+                      lineageId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaAperturaKey]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\División condicional.Inputs[Entrada de división condicional].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      lineageId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\División condicional.Outputs[bad]"
+                  description="Filas descartadas por limpieza o con alguna llave sin coincidencia"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="bad"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">![ISNULL](#{Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}) || [ISNULL](#{Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaAperturaKey]}) || [ISNULL](#{Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(MotivoDescarte) || ISNULL(FechaAperturaKey) || ISNULL(ClienteKey)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\División condicional.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="ErrorFactTicketSoporte"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Comercial].[ErrorFactTicketSoporte]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[FilaOrigen]"
+                      cachedDataType="i4"
+                      cachedName="FilaOrigen"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[ticket_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="ticket_id"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[ticket_id]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[ticket_id]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[cliente_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="cliente_id"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[fecha_apertura]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fecha_apertura"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_apertura]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha_apertura]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[fecha_cierre]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fecha_cierre"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_cierre]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha_cierre]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[horas_resolucion]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="horas_resolucion"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[horas_resolucion]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[horas_resolucion]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[FechaAperturaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaAperturaKey"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaAperturaKey]"
+                      lineageId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaAperturaKey]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      lineageId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[Motivo]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Motivo"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[Motivo]"
+                      lineageId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[ticket_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="ticket_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_apertura]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha_apertura" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_cierre]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[horas_resolucion]"
+                      dataType="wstr"
+                      length="10"
+                      name="horas_resolucion" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaAperturaKey]"
+                      dataType="i4"
+                      name="FechaAperturaKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[Motivo]"
+                      dataType="wstr"
+                      length="200"
+                      name="Motivo" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaRegistro]"
+                      dataType="dbTimeStamp"
+                      name="FechaRegistro" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT TICKET SOPORTE\FactTicketSoporte"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="FactTicketSoporte"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Comercial].[FactTicketSoporte]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[TicketID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="TicketID"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[TicketID]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[TicketID]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[FechaCierre]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="FechaCierre"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaCierre]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaCierre]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[HorasResolucion]"
+                      cachedDataType="numeric"
+                      cachedName="HorasResolucion"
+                      cachedPrecision="9"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[HorasResolucion]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[HorasResolucion]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[Categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Categoria"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[Categoria]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Categoria]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[SlaCumplido]"
+                      cachedDataType="bool"
+                      cachedName="SlaCumplido"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[SlaCumplido]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[SlaCumplido]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[SlaRecalculado]"
+                      cachedDataType="bool"
+                      cachedName="SlaRecalculado"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[SlaRecalculado]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[SlaRecalculado]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[FechaAperturaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaAperturaKey"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaAperturaKey]"
+                      lineageId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaAperturaKey]" />
+                    <inputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      lineageId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[TicketID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TicketID" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaAperturaKey]"
+                      dataType="i4"
+                      name="FechaAperturaKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaCierre]"
+                      dataType="dbTimeStamp2"
+                      name="FechaCierre" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[HorasResolucion]"
+                      dataType="numeric"
+                      name="HorasResolucion"
+                      precision="9"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[Categoria]"
+                      dataType="wstr"
+                      length="30"
+                      name="Categoria" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[SlaCumplido]"
+                      dataType="bool"
+                      name="SlaCumplido" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[SlaRecalculado]"
+                      dataType="bool"
+                      name="SlaRecalculado" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB (limpieza)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH S AS (
+    SELECT t.*, COALESCE(TRY_CONVERT(DATE, t.[fecha_apertura], 103), TRY_CONVERT(DATE, t.[fecha_apertura], 23)) AS [FechaD],
+           TRY_CONVERT(DECIMAL(9,2), t.[horas_resolucion]) AS [Horas]
+      FROM [GCA].[StageTicketSoporte] t),
+R AS (
+    SELECT S.*, CASE WHEN S.[FechaD] BETWEEN c.[FMin] AND c.[FMax] THEN 1 ELSE 0 END AS [EnRango],
+           ROW_NUMBER() OVER (PARTITION BY S.[ticket_id] ORDER BY S.[FilaOrigen]) AS [rnId],
+           MIN(CASE WHEN S.[FechaD] BETWEEN c.[FMin] AND c.[FMax] THEN S.[ticket_id] END)
+               OVER (PARTITION BY S.[cliente_id], S.[horas_resolucion], S.[categoria], S.[sla_cumplido], S.[fase]) AS [Gemelo]
+      FROM S CROSS JOIN (SELECT MIN([Fecha]) AS [FMin], MAX([Fecha]) AS [FMax] FROM [DWH_GCA].[GENERICO].[DimFecha] WHERE [FechaKey] &gt; 0) c)
+SELECT [FilaOrigen], [ticket_id], [cliente_id], [fecha_apertura], [fecha_cierre], [horas_resolucion],
+       [ticket_id] AS [TicketID],
+       CONVERT(INT, CONVERT(CHAR(8), [FechaD], 112)) AS [FechaNum],
+       -- fecha_cierre viene corrupta ("55:34.6"): se reconstruye con apertura + horas de resolución
+       DATEADD(SECOND, CAST(ROUND([Horas] * 3600, 0) AS INT), CAST([FechaD] AS DATETIME2(0))) AS [FechaCierre],
+       [Horas] AS [HorasResolucion],
+       CAST(LTRIM(RTRIM([categoria])) AS NVARCHAR(30)) AS [Categoria],
+       CAST(CASE WHEN [sla_cumplido] = N'1' THEN 1 ELSE 0 END AS BIT) AS [SlaCumplido],
+       CAST(CASE WHEN [Horas] &lt;= 24 THEN 1 ELSE 0 END AS BIT) AS [SlaRecalculado],
+       CAST(CASE WHEN [rnId] &gt; 1 THEN N'Duplicado exacto: ticket_id repetido (se conservó la primera aparición)'
+                 WHEN [FechaD] IS NULL THEN N'Fecha de apertura inválida'
+                 WHEN [EnRango] = 0 AND [Gemelo] IS NOT NULL THEN N'Duplicado de ' + [Gemelo] + N' con fecha alterada (' + [fecha_apertura] + N')'
+                 WHEN [EnRango] = 0 THEN N'Fecha fuera del calendario (' + [fecha_apertura] + N')'
+                 WHEN [Horas] IS NULL OR [Horas] &lt; 0 THEN N'Horas de resolución inválidas'
+            END AS NVARCHAR(200)) AS [MotivoDescarte]
+  FROM R</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Connections[OleDbConnection]"
+                  connectionManagerID="{C367306B-32DC-45CB-9924-5BE02CFDB88F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB STAGE_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FilaOrigen]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]"
+                      name="FilaOrigen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[ticket_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[ticket_id]"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[ticket_id]"
+                      name="ticket_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_id]"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]"
+                      name="cliente_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha_apertura]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_apertura]"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha_apertura]"
+                      name="fecha_apertura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha_cierre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_cierre]"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha_cierre]"
+                      name="fecha_cierre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[horas_resolucion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[horas_resolucion]"
+                      length="10"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[horas_resolucion]"
+                      name="horas_resolucion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[TicketID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[TicketID]"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[TicketID]"
+                      name="TicketID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FechaNum]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]"
+                      name="FechaNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaCierre]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FechaCierre]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaCierre]"
+                      name="FechaCierre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[HorasResolucion]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[HorasResolucion]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[HorasResolucion]"
+                      name="HorasResolucion"
+                      precision="9"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Categoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[Categoria]"
+                      length="30"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Categoria]"
+                      name="Categoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[SlaCumplido]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[SlaCumplido]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[SlaCumplido]"
+                      name="SlaCumplido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[SlaRecalculado]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[SlaRecalculado]"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[SlaRecalculado]"
+                      name="SlaRecalculado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[MotivoDescarte]"
+                      length="200"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]"
+                      name="MotivoDescarte"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[ticket_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="ticket_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_apertura]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha_apertura" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[fecha_cierre]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[horas_resolucion]"
+                      dataType="wstr"
+                      length="10"
+                      name="horas_resolucion" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[TicketID]"
+                      dataType="wstr"
+                      length="20"
+                      name="TicketID" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FechaNum]"
+                      dataType="i4"
+                      name="FechaNum" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FechaCierre]"
+                      dataType="dbTimeStamp2"
+                      name="FechaCierre" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[HorasResolucion]"
+                      dataType="numeric"
+                      name="HorasResolucion"
+                      precision="9"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[Categoria]"
+                      dataType="wstr"
+                      length="30"
+                      name="Categoria" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[SlaCumplido]"
+                      dataType="bool"
+                      name="SlaCumplido" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[SlaRecalculado]"
+                      dataType="bool"
+                      name="SlaRecalculado" />
+                    <externalMetadataColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[MotivoDescarte]"
+                      dataType="wstr"
+                      length="200"
+                      name="MotivoDescarte" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FilaOrigen]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FilaOrigen]"
+                      name="FilaOrigen" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ticket_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ticket_id]"
+                      name="ticket_id" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[cliente_id]"
+                      name="cliente_id" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[fecha_apertura]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[fecha_apertura]"
+                      name="fecha_apertura" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[fecha_cierre]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[fecha_cierre]"
+                      name="fecha_cierre" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[horas_resolucion]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[horas_resolucion]"
+                      name="horas_resolucion" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[TicketID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[TicketID]"
+                      name="TicketID" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FechaNum]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FechaNum]"
+                      name="FechaNum" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FechaCierre]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FechaCierre]"
+                      name="FechaCierre" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[HorasResolucion]"
+                      dataType="numeric"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[HorasResolucion]"
+                      name="HorasResolucion"
+                      precision="9"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[Categoria]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[Categoria]"
+                      name="Categoria" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[SlaCumplido]"
+                      dataType="bool"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[SlaCumplido]"
+                      name="SlaCumplido" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[SlaRecalculado]"
+                      dataType="bool"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[SlaRecalculado]"
+                      name="SlaRecalculado" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[MotivoDescarte]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[MotivoDescarte]"
+                      name="MotivoDescarte" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\FACT TICKET SOPORTE.Paths[bad]"
+              endId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Inputs[Entrada de columna derivada]"
+              name="bad"
+              startId="Package\FACT TICKET SOPORTE\División condicional.Outputs[bad]" />
+            <path
+              refId="Package\FACT TICKET SOPORTE.Paths[Salida de columna derivada]"
+              endId="Package\FACT TICKET SOPORTE\ErrorFactTicketSoporte.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\FACT TICKET SOPORTE\Columna derivada Motivo.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\FACT TICKET SOPORTE.Paths[Salida de entradas coincidentes de búsqueda1]"
+              endId="Package\FACT TICKET SOPORTE\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\FACT TICKET SOPORTE\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\FACT TICKET SOPORTE.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\FACT TICKET SOPORTE\DimCliente.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\FACT TICKET SOPORTE.Paths[Salida de origen de OLE DB]"
+              endId="Package\FACT TICKET SOPORTE\DimFecha (apertura).Inputs[Entrada de búsqueda]"
+              name="Salida de origen de OLE DB"
+              startId="Package\FACT TICKET SOPORTE\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\FACT TICKET SOPORTE.Paths[Salida predeterminada de división condicional]"
+              endId="Package\FACT TICKET SOPORTE\FactTicketSoporte.Inputs[Entrada de destino de OLE DB]"
+              name="Salida predeterminada de división condicional"
+              startId="Package\FACT TICKET SOPORTE\División condicional.Outputs[Salida predeterminada de división condicional]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Get AuditKey"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{D97FA3A4-24FA-43A1-BB38-C442C3DF5B13}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Get AuditKey"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="INSERT INTO [DIM_AUDIT]&#xA;           ([TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[SuccessfulProcessingInd])&#xA;     VALUES&#xA;           (@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@StartTime&#xA;           ,NULL&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,@RowCount&#xA;           ,NULL&#xA;           ,'N')&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Post RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{C251FCB5-67D2-4F5C-B7CC-73881B607747}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Post RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [Comercial].[FactTicketSoporte]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Prior RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{B651C6FF-66AA-49C8-A685-4EA89DB8944E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Prior RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [Comercial].[FactTicketSoporte]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{70D3B6C1-2AFD-4CD0-BB0C-F65CCFBA9C56}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [Comercial].[FactTicketSoporte];&#xA;TRUNCATE TABLE [Comercial].[ErrorFactTicketSoporte];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update AuditDim"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{6AC4D0CD-7E63-49BA-B552-BA7F78350D85}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update AuditDim"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="UPDATE [DIM_AUDIT]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RowCount&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,SuccessfulProcessingInd='Y'&#xA;WHERE AuditKey = @AuditKey;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{8509C2EC-1257-4C73-AA04-7B8DDB9D1797\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{8509C2EC-1257-4C73-AA04-7B8DDB9D1797}"
+      DTS:From="Package\FACT TICKET SOPORTE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{8509C2EC-1257-4C73-AA04-7B8DDB9D1797}"
+      DTS:To="Package\Task Post RowCnt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{A3002827-B05F-4D7B-B6DD-D920B7616779\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{A3002827-B05F-4D7B-B6DD-D920B7616779}"
+      DTS:From="Package\Task Prior RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{A3002827-B05F-4D7B-B6DD-D920B7616779}"
+      DTS:To="Package\Task Get AuditKey" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{A515DB9A-5BF6-4F21-B170-7722E8574BE5\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{A515DB9A-5BF6-4F21-B170-7722E8574BE5}"
+      DTS:From="Package\TRUNCATE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{A515DB9A-5BF6-4F21-B170-7722E8574BE5}"
+      DTS:To="Package\FACT TICKET SOPORTE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{AA5C09C8-9A58-47E2-82D9-409BD56DBBFE\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{AA5C09C8-9A58-47E2-82D9-409BD56DBBFE}"
+      DTS:From="Package\Task Post RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{AA5C09C8-9A58-47E2-82D9-409BD56DBBFE}"
+      DTS:To="Package\Update AuditDim" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{E365ACA2-9B84-4F1E-A542-FE8E9B26EBB5\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{E365ACA2-9B84-4F1E-A542-FE8E9B26EBB5}"
+      DTS:From="Package\Task Get AuditKey"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{E365ACA2-9B84-4F1E-A542-FE8E9B26EBB5}"
+      DTS:To="Package\TRUNCATE" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

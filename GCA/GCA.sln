@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "stage_GCA", "stage_GCA\stage_GCA.dtproj", "{3AC7E775-DBA5-47FA-930A-5051F14DAF4D}"
+EndProject
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "DWH_GCA", "DWH_GCA\DWH_GCA.dtproj", "{756D47BE-A322-4589-9F85-4FCFBA3653A6}"
+EndProject
+Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "Tabular_GCA", "..\Tabular_GCA\Tabular_GCA.smproj", "{6D7FBA9D-2997-42AB-9F51-6CA8B23C5258}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AC7E775-DBA5-47FA-930A-5051F14DAF4D}.Development|Default.ActiveCfg = Development
+		{3AC7E775-DBA5-47FA-930A-5051F14DAF4D}.Development|Default.Build.0 = Development
+		{756D47BE-A322-4589-9F85-4FCFBA3653A6}.Development|Default.ActiveCfg = Development
+		{756D47BE-A322-4589-9F85-4FCFBA3653A6}.Development|Default.Build.0 = Development
+		{6D7FBA9D-2997-42AB-9F51-6CA8B23C5258}.Development|Default.ActiveCfg = Development|x86
+		{6D7FBA9D-2997-42AB-9F51-6CA8B23C5258}.Development|Default.Build.0 = Development|x86
+		{6D7FBA9D-2997-42AB-9F51-6CA8B23C5258}.Development|Default.Deploy.0 = Development|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BC80228-0FAC-4CC2-ABAC-E902D5CB969C}
+	EndGlobalSection
+EndGlobal

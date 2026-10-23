@@ -1,0 +1,741 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/22/2026 9:11:24 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-IO596P6A"
+  DTS:CreatorName="LAPTOP-IO596P6A\Juan"
+  DTS:DTSID="{1E19ED69-4DEC-449A-8502-1C46F03E47BB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1000.7"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="StageTicketSoporte"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{CA4E68FE-4B79-4CCD-9EFE-D6EC6B16ED65}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{16794BD3-6620-4035-97DC-23D233CE6154}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3123ABFD-6503-43BB-924A-8746F33DCF00}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2983F888-5751-4A08-8FB7-AAB776E7A0FF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">[GCA].[StageTicketSoporte]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF StageTicketSoporte"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{8CDFC6B2-50E1-4B61-8BB4-8D140C92AF65}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF StageTicketSoporte"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          autoAdjustBufferSize="true"
+          version="1">
+          <components>
+            <component
+              refId="Package\DF StageTicketSoporte\Origen de archivo plano"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Origen de archivo plano;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de archivo plano"
+              localeId="1033"
+              name="Origen de archivo plano"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si las columnas de longitud cero se tratan como NULL."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre de una columna de salida que contiene el nombre de archivo. Si no se especifica ningún nombre, no se genera ninguna columna de salida con el nombre de archivo."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF StageTicketSoporte\Origen de archivo plano.Connections[FlatFileConnection]"
+                  connectionManagerID="{DB998AF5-FF61-41FE-981F-49EDD6D65988}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[FF TicketSoporte]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano]"
+                  name="Salida de origen de archivo plano">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[ticket_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[ticket_id]"
+                      length="20"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[ticket_id]"
+                      name="ticket_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[cliente_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[cliente_id]"
+                      length="20"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[cliente_id]"
+                      name="cliente_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha_apertura]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fecha_apertura]"
+                      length="20"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha_apertura]"
+                      name="fecha_apertura"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha_cierre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fecha_cierre]"
+                      length="20"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha_cierre]"
+                      name="fecha_cierre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[horas_resolucion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[horas_resolucion]"
+                      length="10"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[horas_resolucion]"
+                      name="horas_resolucion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[categoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[categoria]"
+                      length="30"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[categoria]"
+                      name="categoria"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[sla_cumplido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[sla_cumplido]"
+                      length="10"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[sla_cumplido]"
+                      name="sla_cumplido"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fase]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fase]"
+                      length="20"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fase]"
+                      name="fase"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[ticket_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="ticket_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fecha_apertura]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha_apertura" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fecha_cierre]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[horas_resolucion]"
+                      dataType="wstr"
+                      length="10"
+                      name="horas_resolucion" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[categoria]"
+                      dataType="wstr"
+                      length="30"
+                      name="categoria" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[sla_cumplido]"
+                      dataType="wstr"
+                      length="10"
+                      name="sla_cumplido" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fase]"
+                      dataType="wstr"
+                      length="20"
+                      name="fase" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de archivo plano">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Columna de salida de error de origen de archivo plano"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      name="Columna de salida de error de origen de archivo plano" />
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF StageTicketSoporte\StageTicketSoporte"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="StageTicketSoporte"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[GCA].[StageTicketSoporte]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF StageTicketSoporte\StageTicketSoporte.Connections[OleDbConnection]"
+                  connectionManagerID="{63ACD6B7-1E83-49B7-ABCF-D5B56AED4DE9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB STAGE_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[ticket_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="ticket_id"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[ticket_id]"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[ticket_id]" />
+                    <inputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[cliente_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="cliente_id"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[cliente_id]" />
+                    <inputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[fecha_apertura]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fecha_apertura"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_apertura]"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha_apertura]" />
+                    <inputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[fecha_cierre]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fecha_cierre"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_cierre]"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha_cierre]" />
+                    <inputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[horas_resolucion]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="horas_resolucion"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[horas_resolucion]"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[horas_resolucion]" />
+                    <inputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="categoria"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[categoria]"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[categoria]" />
+                    <inputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[sla_cumplido]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="sla_cumplido"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[sla_cumplido]"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[sla_cumplido]" />
+                    <inputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].Columns[fase]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fase"
+                      externalMetadataColumnId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fase]"
+                      lineageId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fase]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[ticket_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="ticket_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_apertura]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha_apertura" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha_cierre]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha_cierre" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[horas_resolucion]"
+                      dataType="wstr"
+                      length="10"
+                      name="horas_resolucion" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[categoria]"
+                      dataType="wstr"
+                      length="30"
+                      name="categoria" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[sla_cumplido]"
+                      dataType="wstr"
+                      length="10"
+                      name="sla_cumplido" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB].ExternalColumns[fase]"
+                      dataType="wstr"
+                      length="20"
+                      name="fase" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF StageTicketSoporte\StageTicketSoporte.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF StageTicketSoporte\StageTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF StageTicketSoporte\StageTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF StageTicketSoporte\StageTicketSoporte.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF StageTicketSoporte.Paths[Salida de origen de archivo plano]"
+              endId="Package\DF StageTicketSoporte\StageTicketSoporte.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de archivo plano"
+              startId="Package\DF StageTicketSoporte\Origen de archivo plano.Outputs[Salida de origen de archivo plano]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Get AuditKey"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{EB214D0B-1708-467F-A9CD-D6E0451561A5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Get AuditKey"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EBE8FE70-4E87-4D08-AA38-6649A2F98D77}"
+          SQLTask:SqlStatementSource="INSERT INTO [DIM_AUDIT]&#xA;           ([TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[SuccessfulProcessingInd])&#xA;     VALUES&#xA;           (@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@StartTime&#xA;           ,NULL&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,@RowCount&#xA;           ,NULL&#xA;           ,'N')&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Post RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{57359BBE-ED8B-4CD4-9BAB-5534EF17123D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Post RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [GCA].[StageTicketSoporte]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Prior RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{5B0D9FCC-55BB-447D-8F46-1F1C61F45348}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Prior RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [GCA].[StageTicketSoporte]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{249DDDFA-AC37-4DC7-9559-B54EF848F34D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [GCA].[StageTicketSoporte];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update AuditDim"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{DE3BED8B-66CD-4882-B0C8-F26023314980}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update AuditDim"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EBE8FE70-4E87-4D08-AA38-6649A2F98D77}"
+          SQLTask:SqlStatementSource="UPDATE [DIM_AUDIT]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RowCount&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,SuccessfulProcessingInd='Y'&#xA;WHERE AuditKey = @AuditKey;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{68B2B740-EF10-402D-A400-FCF9C3454764\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{68B2B740-EF10-402D-A400-FCF9C3454764}"
+      DTS:From="Package\Task Post RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{68B2B740-EF10-402D-A400-FCF9C3454764}"
+      DTS:To="Package\Update AuditDim" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{72E52F41-9A2B-4905-979B-BFD28CA59440\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{72E52F41-9A2B-4905-979B-BFD28CA59440}"
+      DTS:From="Package\Task Prior RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{72E52F41-9A2B-4905-979B-BFD28CA59440}"
+      DTS:To="Package\Task Get AuditKey" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{A6F12F86-1C12-44BC-8D2D-92FDF784272D\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{A6F12F86-1C12-44BC-8D2D-92FDF784272D}"
+      DTS:From="Package\DF StageTicketSoporte"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{A6F12F86-1C12-44BC-8D2D-92FDF784272D}"
+      DTS:To="Package\Task Post RowCnt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{B24839BB-AABE-46C4-BC14-384BA582B4AE\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{B24839BB-AABE-46C4-BC14-384BA582B4AE}"
+      DTS:From="Package\Task Get AuditKey"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{B24839BB-AABE-46C4-BC14-384BA582B4AE}"
+      DTS:To="Package\TRUNCATE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{DC6DA8FE-0DAE-427D-BFED-94AB7BB76D22\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{DC6DA8FE-0DAE-427D-BFED-94AB7BB76D22}"
+      DTS:From="Package\TRUNCATE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{DC6DA8FE-0DAE-427D-BFED-94AB7BB76D22}"
+      DTS:To="Package\DF StageTicketSoporte" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

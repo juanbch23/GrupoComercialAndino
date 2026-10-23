@@ -1,0 +1,1815 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "es-ES",
+    "dataSources": [
+      {
+        "name": "DWH_GCA",
+        "connectionString": "Provider=MSOLEDBSQL.1;Data Source=LAPTOP-IO596P6A\\DEV;Initial Catalog=DWH_GCA;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "DimFecha",
+        "columns": [
+          {
+            "name": "FechaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaKey",
+            "isHidden": true
+          },
+          {
+            "name": "Fecha",
+            "dataType": "dateTime",
+            "sourceColumn": "Fecha",
+            "formatString": "dd/MM/yyyy",
+            "isKey": true
+          },
+          {
+            "name": "Anio",
+            "dataType": "int64",
+            "sourceColumn": "Anio",
+            "formatString": "0"
+          },
+          {
+            "name": "Mes",
+            "dataType": "int64",
+            "sourceColumn": "Mes",
+            "isHidden": true
+          },
+          {
+            "name": "NombreMes",
+            "dataType": "string",
+            "sourceColumn": "NombreMes",
+            "sortByColumn": "Mes"
+          },
+          {
+            "name": "Trimestre",
+            "dataType": "int64",
+            "sourceColumn": "Trimestre"
+          },
+          {
+            "name": "DiaSemana",
+            "dataType": "int64",
+            "sourceColumn": "DiaSemana",
+            "isHidden": true
+          },
+          {
+            "name": "NombreDia",
+            "dataType": "string",
+            "sourceColumn": "NombreDia",
+            "sortByColumn": "DiaSemana"
+          },
+          {
+            "name": "EsFinSemana",
+            "dataType": "int64",
+            "sourceColumn": "EsFinSemana",
+            "description": "1 = sábado o domingo"
+          },
+          {
+            "name": "Periodo",
+            "dataType": "string",
+            "sourceColumn": "Periodo"
+          },
+          {
+            "name": "Fase",
+            "dataType": "string",
+            "sourceColumn": "Fase",
+            "description": "antes = ene-jun 2023 (situación anterior); despues = jul-2023 a dic-2024 (situación actual del caso)"
+          },
+          {
+            "name": "AnioMes",
+            "dataType": "int64",
+            "sourceColumn": "AnioMes",
+            "isHidden": true
+          },
+          {
+            "name": "MesAnio",
+            "dataType": "string",
+            "sourceColumn": "MesAnio",
+            "sortByColumn": "AnioMes"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimFecha",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [FechaKey], CAST([Fecha] AS DATETIME) AS [Fecha], [Anio], [Mes], [NombreMes], [Trimestre], [DiaSemana],\n       [NombreDia], CAST([EsFinSemana] AS INT) AS [EsFinSemana], [Periodo], [Fase], [AnioMes],\n       LEFT([NombreMes], 3) + '-' + CAST([Anio] AS VARCHAR(4)) AS [MesAnio]\n  FROM [GENERICO].[DimFecha] WHERE [FechaKey] > 0",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "dataCategory": "Time"
+      },
+      {
+        "name": "DimCliente",
+        "columns": [
+          {
+            "name": "ClienteKey",
+            "dataType": "int64",
+            "sourceColumn": "ClienteKey",
+            "isHidden": true
+          },
+          {
+            "name": "ClienteID",
+            "dataType": "string",
+            "sourceColumn": "ClienteID"
+          },
+          {
+            "name": "Nombre",
+            "dataType": "string",
+            "sourceColumn": "Nombre"
+          },
+          {
+            "name": "Tipo",
+            "dataType": "string",
+            "sourceColumn": "Tipo",
+            "description": "B2B / B2C"
+          },
+          {
+            "name": "Segmento",
+            "dataType": "string",
+            "sourceColumn": "Segmento"
+          },
+          {
+            "name": "Pais",
+            "dataType": "string",
+            "sourceColumn": "Pais"
+          },
+          {
+            "name": "FechaAlta",
+            "dataType": "dateTime",
+            "sourceColumn": "FechaAlta",
+            "formatString": "dd/MM/yyyy",
+            "description": "Fecha del archivo (no confiable)"
+          },
+          {
+            "name": "Contrato",
+            "dataType": "string",
+            "sourceColumn": "Contrato"
+          },
+          {
+            "name": "Ejecutivo",
+            "dataType": "string",
+            "sourceColumn": "Ejecutivo"
+          },
+          {
+            "name": "CanalOrigen",
+            "dataType": "string",
+            "sourceColumn": "CanalOrigen"
+          },
+          {
+            "name": "PosibleDuplicado",
+            "dataType": "int64",
+            "sourceColumn": "PosibleDuplicado",
+            "description": "1 = mismo nombre y país que otro cliente_id"
+          },
+          {
+            "name": "FechaAltaFutura",
+            "dataType": "int64",
+            "sourceColumn": "FechaAltaFutura",
+            "isHidden": true
+          },
+          {
+            "name": "AltaPosteriorACompra",
+            "dataType": "int64",
+            "sourceColumn": "AltaPosteriorACompra",
+            "isHidden": true
+          },
+          {
+            "name": "FechaPrimeraCompra",
+            "dataType": "dateTime",
+            "sourceColumn": "FechaPrimeraCompra",
+            "formatString": "dd/MM/yyyy"
+          },
+          {
+            "name": "FechaUltimaCompra",
+            "dataType": "dateTime",
+            "sourceColumn": "FechaUltimaCompra",
+            "formatString": "dd/MM/yyyy"
+          },
+          {
+            "name": "Compra2023",
+            "dataType": "int64",
+            "sourceColumn": "Compra2023",
+            "isHidden": true
+          },
+          {
+            "name": "Compra2024",
+            "dataType": "int64",
+            "sourceColumn": "Compra2024",
+            "isHidden": true
+          },
+          {
+            "name": "Churn2024",
+            "dataType": "int64",
+            "sourceColumn": "Churn2024",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCliente",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [ClienteKey], [ClienteID], [Nombre], [Tipo], [Segmento], [Pais], CAST([FechaAlta] AS DATETIME) AS [FechaAlta],\n       [Contrato], [Ejecutivo], [CanalOrigen], CAST([PosibleDuplicado] AS INT) AS [PosibleDuplicado],\n       CAST([FechaAltaFutura] AS INT) AS [FechaAltaFutura], CAST([AltaPosteriorACompra] AS INT) AS [AltaPosteriorACompra],\n       CAST([FechaPrimeraCompra] AS DATETIME) AS [FechaPrimeraCompra], CAST([FechaUltimaCompra] AS DATETIME) AS [FechaUltimaCompra],\n       CAST([Compra2023] AS INT) AS [Compra2023], CAST([Compra2024] AS INT) AS [Compra2024], CAST([Churn2024] AS INT) AS [Churn2024]\n  FROM [Comercial].[vw_DimCliente]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Clientes_Activos_2023",
+            "expression": "CALCULATE(COUNTROWS(DimCliente), DimCliente[Compra2023] = 1)",
+            "formatString": "#,0",
+            "displayFolder": "07. Churn y cross-sell"
+          },
+          {
+            "name": ".Clientes_Churn_2024",
+            "expression": "CALCULATE(COUNTROWS(DimCliente), DimCliente[Churn2024] = 1)",
+            "formatString": "#,0",
+            "displayFolder": "07. Churn y cross-sell"
+          },
+          {
+            "name": ".%Churn",
+            "expression": "DIVIDE([.Clientes_Churn_2024], [.Clientes_Activos_2023])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "07. Churn y cross-sell",
+            "description": "Clientes que compraron en 2023 y no compraron en 2024 / clientes activos en 2023. Meta <= 8 %"
+          },
+          {
+            "name": ".Clientes_Posible_Duplicado",
+            "expression": "SUM(DimCliente[PosibleDuplicado])",
+            "formatString": "#,0",
+            "displayFolder": "99. Calidad de datos"
+          },
+          {
+            "name": ".Clientes_Alta_Posterior_Compra",
+            "expression": "SUM(DimCliente[AltaPosteriorACompra])",
+            "formatString": "#,0",
+            "displayFolder": "99. Calidad de datos"
+          }
+        ]
+      },
+      {
+        "name": "DimProducto",
+        "columns": [
+          {
+            "name": "ProductoKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductoKey",
+            "isHidden": true
+          },
+          {
+            "name": "ProductoID",
+            "dataType": "string",
+            "sourceColumn": "ProductoID"
+          },
+          {
+            "name": "Categoria",
+            "dataType": "string",
+            "sourceColumn": "Categoria"
+          },
+          {
+            "name": "CostoUnitario",
+            "dataType": "decimal",
+            "sourceColumn": "CostoUnitario",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "PrecioLista",
+            "dataType": "decimal",
+            "sourceColumn": "PrecioLista",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "MargenObjetivo",
+            "dataType": "decimal",
+            "sourceColumn": "MargenObjetivo",
+            "isHidden": true,
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimProducto",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [ProductoKey], [ProductoID], [Categoria], [CostoUnitario], [PrecioLista], [MargenObjetivo]\n  FROM [Comercial].[DimProducto] WHERE [ProductoKey] > 0",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimVendedor",
+        "columns": [
+          {
+            "name": "VendedorKey",
+            "dataType": "int64",
+            "sourceColumn": "VendedorKey",
+            "isHidden": true
+          },
+          {
+            "name": "VendedorID",
+            "dataType": "string",
+            "sourceColumn": "VendedorID"
+          },
+          {
+            "name": "Nombre",
+            "dataType": "string",
+            "sourceColumn": "Nombre"
+          },
+          {
+            "name": "CanalVendedor",
+            "dataType": "string",
+            "sourceColumn": "CanalVendedor"
+          },
+          {
+            "name": "RegionVendedor",
+            "dataType": "string",
+            "sourceColumn": "RegionVendedor"
+          },
+          {
+            "name": "GerenteID",
+            "dataType": "string",
+            "sourceColumn": "GerenteID"
+          },
+          {
+            "name": "Antiguedad",
+            "dataType": "string",
+            "sourceColumn": "Antiguedad"
+          },
+          {
+            "name": "CuotaAnual",
+            "dataType": "decimal",
+            "sourceColumn": "CuotaAnual",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "FechaIngreso",
+            "dataType": "dateTime",
+            "sourceColumn": "FechaIngreso",
+            "formatString": "dd/MM/yyyy"
+          },
+          {
+            "name": "IngresoPosteriorAVenta",
+            "dataType": "int64",
+            "sourceColumn": "IngresoPosteriorAVenta",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimVendedor",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [VendedorKey], [VendedorID], [Nombre], [Canal] AS [CanalVendedor], [Region] AS [RegionVendedor], [GerenteID],\n       [Antiguedad], [CuotaAnual], CAST([FechaIngreso] AS DATETIME) AS [FechaIngreso],\n       CAST([IngresoPosteriorAVenta] AS INT) AS [IngresoPosteriorAVenta]\n  FROM [Comercial].[vw_DimVendedor]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Vendedores_Ingreso_Posterior_Venta",
+            "expression": "SUM(DimVendedor[IngresoPosteriorAVenta])",
+            "formatString": "#,0",
+            "displayFolder": "99. Calidad de datos"
+          }
+        ]
+      },
+      {
+        "name": "DimCanal",
+        "columns": [
+          {
+            "name": "CanalKey",
+            "dataType": "int64",
+            "sourceColumn": "CanalKey",
+            "isHidden": true
+          },
+          {
+            "name": "Canal",
+            "dataType": "string",
+            "sourceColumn": "Canal"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCanal",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [CanalKey], [Canal] FROM [Comercial].[DimCanal] WHERE [CanalKey] > 0",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimRegion",
+        "columns": [
+          {
+            "name": "RegionKey",
+            "dataType": "int64",
+            "sourceColumn": "RegionKey",
+            "isHidden": true
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "Pais",
+            "dataType": "string",
+            "sourceColumn": "Pais"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimRegion",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [RegionKey], [Region], [Pais] FROM [Comercial].[DimRegion] WHERE [RegionKey] > 0",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ]
+      },
+      {
+        "name": "FactVenta",
+        "columns": [
+          {
+            "name": "VentaID",
+            "dataType": "string",
+            "sourceColumn": "VentaID"
+          },
+          {
+            "name": "OportunidadID",
+            "dataType": "string",
+            "sourceColumn": "OportunidadID",
+            "isHidden": true
+          },
+          {
+            "name": "FechaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaKey",
+            "isHidden": true
+          },
+          {
+            "name": "ClienteKey",
+            "dataType": "int64",
+            "sourceColumn": "ClienteKey",
+            "isHidden": true
+          },
+          {
+            "name": "VendedorKey",
+            "dataType": "int64",
+            "sourceColumn": "VendedorKey",
+            "isHidden": true
+          },
+          {
+            "name": "ProductoKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductoKey",
+            "isHidden": true
+          },
+          {
+            "name": "CanalKey",
+            "dataType": "int64",
+            "sourceColumn": "CanalKey",
+            "isHidden": true
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "int64",
+            "sourceColumn": "RegionKey",
+            "isHidden": true
+          },
+          {
+            "name": "PrecioLista",
+            "dataType": "decimal",
+            "sourceColumn": "PrecioLista",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "PrecioUnitarioNeto",
+            "dataType": "decimal",
+            "sourceColumn": "PrecioUnitarioNeto",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "VentaNeta",
+            "dataType": "decimal",
+            "sourceColumn": "VentaNeta",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "CostoTotal",
+            "dataType": "decimal",
+            "sourceColumn": "CostoTotal",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "MargenBruto",
+            "dataType": "decimal",
+            "sourceColumn": "MargenBruto",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "ImporteLista",
+            "dataType": "decimal",
+            "sourceColumn": "ImporteLista",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Cantidad",
+            "dataType": "int64",
+            "sourceColumn": "Cantidad",
+            "isHidden": true
+          },
+          {
+            "name": "Descuento",
+            "dataType": "decimal",
+            "sourceColumn": "Descuento",
+            "isHidden": true,
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "MargenPct",
+            "dataType": "decimal",
+            "sourceColumn": "MargenPct",
+            "isHidden": true,
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "VentaNetaRecalculada",
+            "dataType": "int64",
+            "sourceColumn": "VentaNetaRecalculada",
+            "isHidden": true
+          },
+          {
+            "name": "MargenRecalculado",
+            "dataType": "int64",
+            "sourceColumn": "MargenRecalculado",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactVenta",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [VentaID], [OportunidadID], [FechaKey], [ClienteKey], [VendedorKey], [ProductoKey], [CanalKey], [RegionKey],\n       [Cantidad], [PrecioLista], [Descuento], [PrecioUnitarioNeto], [VentaNeta], [CostoTotal], [MargenBruto], [MargenPct],\n       CAST([Cantidad] * [PrecioLista] AS DECIMAL(18,2)) AS [ImporteLista],\n       CAST([VentaNetaRecalculada] AS INT) AS [VentaNetaRecalculada], CAST([MargenRecalculado] AS INT) AS [MargenRecalculado]\n  FROM [Comercial].[FactVenta]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Ventas_Netas",
+            "expression": "SUM(FactVenta[VentaNeta])",
+            "formatString": "#,0.00",
+            "displayFolder": "00. Ventas base",
+            "description": "Venta neta recalculada (cantidad x precio unitario neto)"
+          },
+          {
+            "name": ".Costo_Total",
+            "expression": "SUM(FactVenta[CostoTotal])",
+            "formatString": "#,0.00",
+            "displayFolder": "00. Ventas base"
+          },
+          {
+            "name": ".Margen_Bruto",
+            "expression": "SUM(FactVenta[MargenBruto])",
+            "formatString": "#,0.00",
+            "displayFolder": "00. Ventas base",
+            "description": "Ventas netas - costo"
+          },
+          {
+            "name": ".Transacciones",
+            "expression": "COUNTROWS(FactVenta)",
+            "formatString": "#,0",
+            "displayFolder": "00. Ventas base"
+          },
+          {
+            "name": ".Unidades",
+            "expression": "SUM(FactVenta[Cantidad])",
+            "formatString": "#,0",
+            "displayFolder": "00. Ventas base"
+          },
+          {
+            "name": ".Clientes_Activos",
+            "expression": "DISTINCTCOUNT(FactVenta[ClienteKey])",
+            "formatString": "#,0",
+            "displayFolder": "00. Ventas base"
+          },
+          {
+            "name": ".Vendedores_Activos",
+            "expression": "DISTINCTCOUNT(FactVenta[VendedorKey])",
+            "formatString": "#,0",
+            "displayFolder": "00. Ventas base"
+          },
+          {
+            "name": ".Meses",
+            "expression": "DISTINCTCOUNT(DimFecha[AnioMes])",
+            "formatString": "#,0",
+            "displayFolder": "00. Ventas base"
+          },
+          {
+            "name": ".%Cumplimiento_Cuota",
+            "expression": "DIVIDE([.Ventas_Netas], [.Cuota])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "01. Cumplimiento de cuota",
+            "description": "Meta >= 95 %"
+          },
+          {
+            "name": ".%Cumplimiento_Cuota_Antes",
+            "expression": "CALCULATE([.%Cumplimiento_Cuota], DimFecha[Fase] = \"antes\")",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "01. Cumplimiento de cuota"
+          },
+          {
+            "name": ".%Cumplimiento_Cuota_Despues",
+            "expression": "CALCULATE([.%Cumplimiento_Cuota], DimFecha[Fase] = \"despues\")",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "01. Cumplimiento de cuota"
+          },
+          {
+            "name": ".Ticket_Promedio",
+            "expression": "DIVIDE([.Ventas_Netas], [.Transacciones])",
+            "formatString": "#,0.00",
+            "displayFolder": "02. Ticket promedio"
+          },
+          {
+            "name": ".Ticket_B2B",
+            "expression": "CALCULATE([.Ticket_Promedio], DimCliente[Tipo] = \"B2B\")",
+            "formatString": "#,0.00",
+            "displayFolder": "02. Ticket promedio",
+            "description": "Meta >= USD 4.000"
+          },
+          {
+            "name": ".Ticket_B2C",
+            "expression": "CALCULATE([.Ticket_Promedio], DimCliente[Tipo] = \"B2C\")",
+            "formatString": "#,0.00",
+            "displayFolder": "02. Ticket promedio",
+            "description": "Meta >= USD 85"
+          },
+          {
+            "name": ".Ticket_B2B_Antes",
+            "expression": "CALCULATE([.Ticket_B2B], DimFecha[Fase] = \"antes\")",
+            "formatString": "#,0.00",
+            "displayFolder": "02. Ticket promedio"
+          },
+          {
+            "name": ".Ticket_B2B_Despues",
+            "expression": "CALCULATE([.Ticket_B2B], DimFecha[Fase] = \"despues\")",
+            "formatString": "#,0.00",
+            "displayFolder": "02. Ticket promedio"
+          },
+          {
+            "name": ".Clientes_Multicategoria",
+            "expression": "COUNTROWS(FILTER(VALUES(FactVenta[ClienteKey]), CALCULATE(DISTINCTCOUNT(DimProducto[Categoria])) > 1))",
+            "formatString": "#,0",
+            "displayFolder": "07. Churn y cross-sell"
+          },
+          {
+            "name": ".%Cross_Sell",
+            "expression": "DIVIDE([.Clientes_Multicategoria], [.Clientes_Activos])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "07. Churn y cross-sell",
+            "description": "Clientes que compran más de una categoría / clientes activos. Meta >= 35 %"
+          },
+          {
+            "name": ".%Margen_Bruto",
+            "expression": "DIVIDE([.Margen_Bruto], [.Ventas_Netas])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "08. Margen bruto",
+            "description": "Meta >= 26 %"
+          },
+          {
+            "name": ".Ventas_Margen_Negativo",
+            "expression": "CALCULATE([.Transacciones], FactVenta[MargenBruto] < 0)",
+            "formatString": "#,0",
+            "displayFolder": "08. Margen bruto",
+            "description": "Ventas por debajo del costo"
+          },
+          {
+            "name": ".%Margen_Bruto_Antes",
+            "expression": "CALCULATE([.%Margen_Bruto], DimFecha[Fase] = \"antes\")",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "08. Margen bruto"
+          },
+          {
+            "name": ".%Margen_Bruto_Despues",
+            "expression": "CALCULATE([.%Margen_Bruto], DimFecha[Fase] = \"despues\")",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "08. Margen bruto"
+          },
+          {
+            "name": ".%Descuento_Promedio",
+            "expression": "1 - DIVIDE([.Ventas_Netas], SUM(FactVenta[ImporteLista]))",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "09. Descuentos",
+            "description": "Descuento otorgado / precio de lista (ponderado por importe). Meta <= 9 %"
+          },
+          {
+            "name": ".%Descuento_Promedio_Antes",
+            "expression": "CALCULATE([.%Descuento_Promedio], DimFecha[Fase] = \"antes\")",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "09. Descuentos"
+          },
+          {
+            "name": ".%Descuento_Promedio_Despues",
+            "expression": "CALCULATE([.%Descuento_Promedio], DimFecha[Fase] = \"despues\")",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "09. Descuentos"
+          },
+          {
+            "name": ".Productividad_Vendedor",
+            "expression": "DIVIDE([.Ventas_Netas], [.Vendedores_Activos])",
+            "formatString": "#,0.00",
+            "displayFolder": "10. Productividad",
+            "description": "Ventas netas / vendedores"
+          },
+          {
+            "name": ".Productividad_Anual",
+            "expression": "DIVIDE([.Productividad_Vendedor] * 12, [.Meses])",
+            "formatString": "#,0.00",
+            "displayFolder": "10. Productividad",
+            "description": "Ventas por vendedor llevadas a 12 meses. Meta >= USD 1,6M"
+          },
+          {
+            "name": ".LTV_Margen_por_Cliente",
+            "expression": "DIVIDE([.Margen_Bruto], [.Clientes_Activos])",
+            "formatString": "#,0.00",
+            "displayFolder": "11. CAC y LTV",
+            "description": "Margen bruto acumulado por cliente activo (aproximación de LTV)"
+          },
+          {
+            "name": ".LTV_CAC",
+            "expression": "DIVIDE([.LTV_Margen_por_Cliente], CALCULATE([.CAC_Marketing], ALL(FactMarketing[CanalDigital])))",
+            "formatString": "0.0\"x\"",
+            "displayFolder": "11. CAC y LTV",
+            "description": "Aproximación: margen por cliente / CAC de marketing. Meta >= 3,0x"
+          },
+          {
+            "name": ".Ventas_Neta_Recalculada",
+            "expression": "SUM(FactVenta[VentaNetaRecalculada])",
+            "formatString": "#,0",
+            "displayFolder": "99. Calidad de datos",
+            "description": "Ventas cuyo importe venía vacío en el archivo y se recalculó"
+          },
+          {
+            "name": ".Ventas_Margen_Recalculado",
+            "expression": "SUM(FactVenta[MargenRecalculado])",
+            "formatString": "#,0",
+            "displayFolder": "99. Calidad de datos"
+          }
+        ]
+      },
+      {
+        "name": "FactOportunidad",
+        "columns": [
+          {
+            "name": "OportunidadID",
+            "dataType": "string",
+            "sourceColumn": "OportunidadID"
+          },
+          {
+            "name": "FechaCreacionKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaCreacionKey",
+            "isHidden": true
+          },
+          {
+            "name": "FechaCierreKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaCierreKey",
+            "isHidden": true
+          },
+          {
+            "name": "ClienteKey",
+            "dataType": "int64",
+            "sourceColumn": "ClienteKey",
+            "isHidden": true
+          },
+          {
+            "name": "VendedorKey",
+            "dataType": "int64",
+            "sourceColumn": "VendedorKey",
+            "isHidden": true
+          },
+          {
+            "name": "CanalKey",
+            "dataType": "int64",
+            "sourceColumn": "CanalKey",
+            "isHidden": true
+          },
+          {
+            "name": "RegionKey",
+            "dataType": "int64",
+            "sourceColumn": "RegionKey",
+            "isHidden": true
+          },
+          {
+            "name": "GerenteID",
+            "dataType": "string",
+            "sourceColumn": "GerenteID"
+          },
+          {
+            "name": "Etapa",
+            "dataType": "string",
+            "sourceColumn": "Etapa"
+          },
+          {
+            "name": "Resultado",
+            "dataType": "string",
+            "sourceColumn": "Resultado"
+          },
+          {
+            "name": "Facturada",
+            "dataType": "int64",
+            "sourceColumn": "Facturada",
+            "isHidden": true
+          },
+          {
+            "name": "MotivoPerdida",
+            "dataType": "string",
+            "sourceColumn": "MotivoPerdida"
+          },
+          {
+            "name": "Monto",
+            "dataType": "decimal",
+            "sourceColumn": "Monto",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "DescuentoSolicitado",
+            "dataType": "decimal",
+            "sourceColumn": "DescuentoSolicitado",
+            "isHidden": true,
+            "formatString": "0.0 %;-0.0 %;0.0 %"
+          },
+          {
+            "name": "FueraPolitica",
+            "dataType": "int64",
+            "sourceColumn": "FueraPolitica",
+            "isHidden": true
+          },
+          {
+            "name": "Touchpoints",
+            "dataType": "int64",
+            "sourceColumn": "Touchpoints"
+          },
+          {
+            "name": "TieneDemoTecnica",
+            "dataType": "int64",
+            "sourceColumn": "TieneDemoTecnica",
+            "isHidden": true
+          },
+          {
+            "name": "DemoTecnica",
+            "dataType": "string",
+            "sourceColumn": "DemoTecnica"
+          },
+          {
+            "name": "GrupoTouchpoints",
+            "dataType": "string",
+            "sourceColumn": "GrupoTouchpoints"
+          },
+          {
+            "name": "CicloVentaDias",
+            "dataType": "int64",
+            "sourceColumn": "CicloVentaDias",
+            "isHidden": true
+          },
+          {
+            "name": "CicloVentaOrigen",
+            "dataType": "int64",
+            "sourceColumn": "CicloVentaOrigen",
+            "isHidden": true
+          },
+          {
+            "name": "CicloCorregido",
+            "dataType": "int64",
+            "sourceColumn": "CicloCorregido",
+            "isHidden": true
+          },
+          {
+            "name": "DiasSinActividad",
+            "dataType": "int64",
+            "sourceColumn": "DiasSinActividad",
+            "isHidden": true
+          },
+          {
+            "name": "Zombie",
+            "dataType": "int64",
+            "sourceColumn": "Zombie",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactOportunidad",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [OportunidadID], [FechaCreacionKey], [FechaCierreKey], [ClienteKey], [VendedorKey], [CanalKey], [RegionKey],\n       [GerenteID], [Etapa], [Resultado], CAST([Facturada] AS INT) AS [Facturada], [MotivoPerdida], [Monto],\n       [DescuentoSolicitado], CAST([FueraPolitica] AS INT) AS [FueraPolitica], [Touchpoints],\n       CAST([TieneDemoTecnica] AS INT) AS [TieneDemoTecnica],\n       CASE WHEN [TieneDemoTecnica] = 1 THEN 'Con demo' ELSE 'Sin demo' END AS [DemoTecnica],\n       CASE WHEN [Touchpoints] > 3 THEN 'Más de 3' WHEN [Touchpoints] = 1 THEN '1' ELSE '2 a 3' END AS [GrupoTouchpoints],\n       [CicloVentaDias], [CicloVentaOrigen], CAST([CicloCorregido] AS INT) AS [CicloCorregido],\n       [DiasSinActividad], CAST([Zombie] AS INT) AS [Zombie]\n  FROM [Comercial].[FactOportunidad]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Ciclo_Venta_Dias",
+            "expression": "CALCULATE(AVERAGE(FactOportunidad[CicloVentaDias]), FactOportunidad[Facturada] = 1)",
+            "formatString": "#,0.0",
+            "displayFolder": "04. Ciclo de venta",
+            "description": "Días de creación a cierre de las oportunidades ganadas (facturadas). Meta <= 50"
+          },
+          {
+            "name": ".Ciclo_Venta_Dias_Antes",
+            "expression": "CALCULATE([.Ciclo_Venta_Dias], DimFecha[Fase] = \"antes\")",
+            "formatString": "#,0.0",
+            "displayFolder": "04. Ciclo de venta"
+          },
+          {
+            "name": ".Ciclo_Venta_Dias_Despues",
+            "expression": "CALCULATE([.Ciclo_Venta_Dias], DimFecha[Fase] = \"despues\")",
+            "formatString": "#,0.0",
+            "displayFolder": "04. Ciclo de venta"
+          },
+          {
+            "name": ".Oportunidades_Cerradas",
+            "expression": "COUNTROWS(FactOportunidad)",
+            "formatString": "#,0",
+            "displayFolder": "05. Win rate y pérdidas"
+          },
+          {
+            "name": ".Oportunidades_Ganadas",
+            "expression": "CALCULATE(COUNTROWS(FactOportunidad), FactOportunidad[Facturada] = 1)",
+            "formatString": "#,0",
+            "displayFolder": "05. Win rate y pérdidas",
+            "description": "Regla del caso: ganada solo si está facturada"
+          },
+          {
+            "name": ".Oportunidades_Perdidas",
+            "expression": "[.Oportunidades_Cerradas] - [.Oportunidades_Ganadas]",
+            "formatString": "#,0",
+            "displayFolder": "05. Win rate y pérdidas"
+          },
+          {
+            "name": ".%Win_Rate",
+            "expression": "DIVIDE([.Oportunidades_Ganadas], [.Oportunidades_Cerradas])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "05. Win rate y pérdidas",
+            "description": "Meta >= 35 %"
+          },
+          {
+            "name": ".%Perdidas",
+            "expression": "DIVIDE([.Oportunidades_Perdidas], [.Oportunidades_Cerradas])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "05. Win rate y pérdidas",
+            "description": "Meta <= 65 %"
+          },
+          {
+            "name": ".%Motivo_Perdida",
+            "expression": "DIVIDE([.Oportunidades_Perdidas],\n       CALCULATE([.Oportunidades_Perdidas], ALLSELECTED(FactOportunidad[MotivoPerdida])))",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "05. Win rate y pérdidas",
+            "description": "Participación de cada motivo sobre las oportunidades perdidas"
+          },
+          {
+            "name": ".%Win_Rate_Antes",
+            "expression": "CALCULATE([.%Win_Rate], DimFecha[Fase] = \"antes\")",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "05. Win rate y pérdidas"
+          },
+          {
+            "name": ".%Win_Rate_Despues",
+            "expression": "CALCULATE([.%Win_Rate], DimFecha[Fase] = \"despues\")",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "05. Win rate y pérdidas"
+          },
+          {
+            "name": ".Monto_Pipeline",
+            "expression": "SUM(FactOportunidad[Monto])",
+            "formatString": "#,0.00",
+            "displayFolder": "06. Pipeline"
+          },
+          {
+            "name": ".Pipeline_Coverage",
+            "expression": "DIVIDE([.Monto_Pipeline], [.Cuota])",
+            "formatString": "0.0\"x\"",
+            "displayFolder": "06. Pipeline",
+            "description": "Monto de oportunidades / cuota. Todas las oportunidades del archivo están cerradas: es una aproximación"
+          },
+          {
+            "name": ".%Zombie",
+            "expression": "DIVIDE(CALCULATE(COUNTROWS(FactOportunidad), FactOportunidad[Zombie] = 1), [.Oportunidades_Cerradas])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "06. Pipeline",
+            "description": "Oportunidades con más de 180 días sin actividad"
+          },
+          {
+            "name": ".%Descuento_Solicitado",
+            "expression": "AVERAGE(FactOportunidad[DescuentoSolicitado])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "09. Descuentos"
+          },
+          {
+            "name": ".%Fuera_Politica",
+            "expression": "DIVIDE(SUM(FactOportunidad[FueraPolitica]), [.Oportunidades_Cerradas])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "09. Descuentos"
+          },
+          {
+            "name": ".Ciclos_Corregidos",
+            "expression": "SUM(FactOportunidad[CicloCorregido])",
+            "formatString": "#,0",
+            "displayFolder": "99. Calidad de datos",
+            "description": "ciclo_venta_dias del archivo no coincidía con cierre - creación"
+          }
+        ]
+      },
+      {
+        "name": "FactLlamada",
+        "columns": [
+          {
+            "name": "LlamadaID",
+            "dataType": "string",
+            "sourceColumn": "LlamadaID",
+            "isHidden": true
+          },
+          {
+            "name": "FechaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaKey",
+            "isHidden": true
+          },
+          {
+            "name": "VendedorKey",
+            "dataType": "int64",
+            "sourceColumn": "VendedorKey",
+            "isHidden": true
+          },
+          {
+            "name": "ClienteKey",
+            "dataType": "int64",
+            "sourceColumn": "ClienteKey",
+            "isHidden": true
+          },
+          {
+            "name": "DuracionSeg",
+            "dataType": "int64",
+            "sourceColumn": "DuracionSeg",
+            "isHidden": true
+          },
+          {
+            "name": "Disposicion",
+            "dataType": "string",
+            "sourceColumn": "Disposicion"
+          },
+          {
+            "name": "EsVenta",
+            "dataType": "int64",
+            "sourceColumn": "EsVenta",
+            "isHidden": true
+          },
+          {
+            "name": "EsVentaInconsistente",
+            "dataType": "int64",
+            "sourceColumn": "EsVentaInconsistente",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactLlamada",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [LlamadaID], [FechaKey], [VendedorKey], [ClienteKey], [DuracionSeg], [Disposicion],\n       CAST([EsVenta] AS INT) AS [EsVenta], CAST([EsVentaInconsistente] AS INT) AS [EsVentaInconsistente]\n  FROM [Comercial].[FactLlamada]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Llamadas",
+            "expression": "COUNTROWS(FactLlamada)",
+            "formatString": "#,0",
+            "displayFolder": "13. Inside sales (call center)"
+          },
+          {
+            "name": ".%Llamadas_con_Venta",
+            "expression": "DIVIDE(SUM(FactLlamada[EsVenta]), [.Llamadas])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "13. Inside sales (call center)"
+          },
+          {
+            "name": ".%Contactadas",
+            "expression": "DIVIDE(CALCULATE([.Llamadas], FactLlamada[Disposicion] <> \"No contactado\"), [.Llamadas])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "13. Inside sales (call center)"
+          },
+          {
+            "name": ".Llamadas_Inconsistentes",
+            "expression": "SUM(FactLlamada[EsVentaInconsistente])",
+            "formatString": "#,0",
+            "displayFolder": "99. Calidad de datos",
+            "description": "es_venta = 1 con disposición 'No contactado' o 'Rechazo'"
+          }
+        ]
+      },
+      {
+        "name": "FactCarrito",
+        "columns": [
+          {
+            "name": "CarritoID",
+            "dataType": "string",
+            "sourceColumn": "CarritoID",
+            "isHidden": true
+          },
+          {
+            "name": "FechaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaKey",
+            "isHidden": true
+          },
+          {
+            "name": "ClienteKey",
+            "dataType": "int64",
+            "sourceColumn": "ClienteKey",
+            "isHidden": true
+          },
+          {
+            "name": "Monto",
+            "dataType": "decimal",
+            "sourceColumn": "Monto",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "PasoAbandono",
+            "dataType": "string",
+            "sourceColumn": "PasoAbandono"
+          },
+          {
+            "name": "Recuperado",
+            "dataType": "int64",
+            "sourceColumn": "Recuperado",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCarrito",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [CarritoID], [FechaKey], [ClienteKey], [Monto], [PasoAbandono], CAST([Recuperado] AS INT) AS [Recuperado]\n  FROM [Comercial].[FactCarrito]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Carritos_Abandonados",
+            "expression": "COUNTROWS(FactCarrito)",
+            "formatString": "#,0",
+            "displayFolder": "03. Conversión e-commerce"
+          },
+          {
+            "name": ".Monto_Abandonado",
+            "expression": "SUM(FactCarrito[Monto])",
+            "formatString": "#,0.00",
+            "displayFolder": "03. Conversión e-commerce"
+          },
+          {
+            "name": ".%Carritos_Recuperados",
+            "expression": "DIVIDE(SUM(FactCarrito[Recuperado]), [.Carritos_Abandonados])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "03. Conversión e-commerce"
+          }
+        ]
+      },
+      {
+        "name": "FactSesion",
+        "columns": [
+          {
+            "name": "FechaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaKey",
+            "isHidden": true
+          },
+          {
+            "name": "CanalDigital",
+            "dataType": "string",
+            "sourceColumn": "CanalDigital"
+          },
+          {
+            "name": "Dispositivo",
+            "dataType": "string",
+            "sourceColumn": "Dispositivo"
+          },
+          {
+            "name": "Sesiones",
+            "dataType": "int64",
+            "sourceColumn": "Sesiones",
+            "isHidden": true
+          },
+          {
+            "name": "AddToCart",
+            "dataType": "int64",
+            "sourceColumn": "AddToCart",
+            "isHidden": true
+          },
+          {
+            "name": "CheckoutIniciado",
+            "dataType": "int64",
+            "sourceColumn": "CheckoutIniciado",
+            "isHidden": true
+          },
+          {
+            "name": "Ordenes",
+            "dataType": "int64",
+            "sourceColumn": "Ordenes",
+            "isHidden": true
+          },
+          {
+            "name": "TicketPromedio",
+            "dataType": "decimal",
+            "sourceColumn": "TicketPromedio",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "VentaTotal",
+            "dataType": "decimal",
+            "sourceColumn": "VentaTotal",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactSesion",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [FechaKey], [CanalDigital], [Dispositivo], [Sesiones], [AddToCart], [CheckoutIniciado], [Ordenes],\n       [TicketPromedio], [VentaTotal]\n  FROM [Comercial].[FactSesion]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Sesiones",
+            "expression": "SUM(FactSesion[Sesiones])",
+            "formatString": "#,0",
+            "displayFolder": "03. Conversión e-commerce"
+          },
+          {
+            "name": ".Ordenes",
+            "expression": "SUM(FactSesion[Ordenes])",
+            "formatString": "#,0",
+            "displayFolder": "03. Conversión e-commerce"
+          },
+          {
+            "name": ".%Conversion_Ecommerce",
+            "expression": "DIVIDE([.Ordenes], [.Sesiones])",
+            "formatString": "0.00 %",
+            "displayFolder": "03. Conversión e-commerce",
+            "description": "Meta >= 3,0 %"
+          },
+          {
+            "name": ".%Add_to_Cart",
+            "expression": "DIVIDE(SUM(FactSesion[AddToCart]), [.Sesiones])",
+            "formatString": "0.00 %",
+            "displayFolder": "03. Conversión e-commerce"
+          },
+          {
+            "name": ".%Checkout_Iniciado",
+            "expression": "DIVIDE(SUM(FactSesion[CheckoutIniciado]), [.Sesiones])",
+            "formatString": "0.00 %",
+            "displayFolder": "03. Conversión e-commerce"
+          },
+          {
+            "name": ".Venta_Ecommerce",
+            "expression": "SUM(FactSesion[VentaTotal])",
+            "formatString": "#,0.00",
+            "displayFolder": "03. Conversión e-commerce"
+          },
+          {
+            "name": ".%Conversion_Ecommerce_Antes",
+            "expression": "CALCULATE([.%Conversion_Ecommerce], DimFecha[Fase] = \"antes\")",
+            "formatString": "0.00 %",
+            "displayFolder": "03. Conversión e-commerce"
+          },
+          {
+            "name": ".%Conversion_Ecommerce_Despues",
+            "expression": "CALCULATE([.%Conversion_Ecommerce], DimFecha[Fase] = \"despues\")",
+            "formatString": "0.00 %",
+            "displayFolder": "03. Conversión e-commerce"
+          }
+        ]
+      },
+      {
+        "name": "FactEncuesta",
+        "columns": [
+          {
+            "name": "EncuestaID",
+            "dataType": "string",
+            "sourceColumn": "EncuestaID",
+            "isHidden": true
+          },
+          {
+            "name": "FechaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaKey",
+            "isHidden": true
+          },
+          {
+            "name": "ClienteKey",
+            "dataType": "int64",
+            "sourceColumn": "ClienteKey",
+            "isHidden": true
+          },
+          {
+            "name": "Momento",
+            "dataType": "string",
+            "sourceColumn": "Momento"
+          },
+          {
+            "name": "NPS",
+            "dataType": "int64",
+            "sourceColumn": "NPS",
+            "isHidden": true
+          },
+          {
+            "name": "CSAT",
+            "dataType": "decimal",
+            "sourceColumn": "CSAT",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactEncuesta",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [EncuestaID], [FechaKey], [ClienteKey], [Momento], [NPS], [CSAT] FROM [Comercial].[FactEncuesta]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Encuestas",
+            "expression": "COUNTROWS(FactEncuesta)",
+            "formatString": "#,0",
+            "displayFolder": "12. NPS y soporte"
+          },
+          {
+            "name": ".NPS",
+            "expression": "AVERAGE(FactEncuesta[NPS])",
+            "formatString": "0.0",
+            "displayFolder": "12. NPS y soporte",
+            "description": "Promedio del puntaje NPS de cada medición. Meta >= 50"
+          },
+          {
+            "name": ".CSAT",
+            "expression": "AVERAGE(FactEncuesta[CSAT])",
+            "formatString": "0.00",
+            "displayFolder": "12. NPS y soporte"
+          },
+          {
+            "name": ".NPS_Antes",
+            "expression": "CALCULATE([.NPS], DimFecha[Fase] = \"antes\")",
+            "formatString": "0.0",
+            "displayFolder": "12. NPS y soporte"
+          },
+          {
+            "name": ".NPS_Despues",
+            "expression": "CALCULATE([.NPS], DimFecha[Fase] = \"despues\")",
+            "formatString": "0.0",
+            "displayFolder": "12. NPS y soporte"
+          }
+        ]
+      },
+      {
+        "name": "FactMarketing",
+        "columns": [
+          {
+            "name": "FechaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaKey",
+            "isHidden": true
+          },
+          {
+            "name": "CanalDigital",
+            "dataType": "string",
+            "sourceColumn": "CanalDigital"
+          },
+          {
+            "name": "Campana",
+            "dataType": "string",
+            "sourceColumn": "Campana"
+          },
+          {
+            "name": "Inversion",
+            "dataType": "decimal",
+            "sourceColumn": "Inversion",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Leads",
+            "dataType": "int64",
+            "sourceColumn": "Leads",
+            "isHidden": true
+          },
+          {
+            "name": "NuevosClientes",
+            "dataType": "int64",
+            "sourceColumn": "NuevosClientes",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactMarketing",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [FechaKey], [CanalDigital], [Campana], [Inversion], [Leads], [NuevosClientes] FROM [Comercial].[FactMarketing]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Inversion_Marketing",
+            "expression": "SUM(FactMarketing[Inversion])",
+            "formatString": "#,0.00",
+            "displayFolder": "11. CAC y LTV"
+          },
+          {
+            "name": ".Leads",
+            "expression": "SUM(FactMarketing[Leads])",
+            "formatString": "#,0",
+            "displayFolder": "11. CAC y LTV"
+          },
+          {
+            "name": ".Nuevos_Clientes",
+            "expression": "SUM(FactMarketing[NuevosClientes])",
+            "formatString": "#,0",
+            "displayFolder": "11. CAC y LTV"
+          },
+          {
+            "name": ".CAC_Marketing",
+            "expression": "DIVIDE([.Inversion_Marketing], [.Nuevos_Clientes])",
+            "formatString": "#,0.00",
+            "displayFolder": "11. CAC y LTV",
+            "description": "Solo inversión de marketing (el archivo no trae comisiones ni costo de venta directa). Meta <= USD 380"
+          },
+          {
+            "name": ".Costo_por_Lead",
+            "expression": "DIVIDE([.Inversion_Marketing], [.Leads])",
+            "formatString": "#,0.00",
+            "displayFolder": "11. CAC y LTV"
+          }
+        ]
+      },
+      {
+        "name": "FactTicketSoporte",
+        "columns": [
+          {
+            "name": "TicketID",
+            "dataType": "string",
+            "sourceColumn": "TicketID",
+            "isHidden": true
+          },
+          {
+            "name": "ClienteKey",
+            "dataType": "int64",
+            "sourceColumn": "ClienteKey",
+            "isHidden": true
+          },
+          {
+            "name": "FechaAperturaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaAperturaKey",
+            "isHidden": true
+          },
+          {
+            "name": "FechaCierre",
+            "dataType": "dateTime",
+            "sourceColumn": "FechaCierre",
+            "formatString": "dd/MM/yyyy HH:mm",
+            "description": "Reconstruida: apertura + horas de resolución"
+          },
+          {
+            "name": "HorasResolucion",
+            "dataType": "decimal",
+            "sourceColumn": "HorasResolucion",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Categoria",
+            "dataType": "string",
+            "sourceColumn": "Categoria"
+          },
+          {
+            "name": "SlaCumplido",
+            "dataType": "int64",
+            "sourceColumn": "SlaCumplido",
+            "isHidden": true
+          },
+          {
+            "name": "SlaRecalculado",
+            "dataType": "int64",
+            "sourceColumn": "SlaRecalculado",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactTicketSoporte",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [TicketID], [ClienteKey], [FechaAperturaKey], [FechaCierre], [HorasResolucion], [Categoria],\n       CAST([SlaCumplido] AS INT) AS [SlaCumplido], CAST([SlaRecalculado] AS INT) AS [SlaRecalculado]\n  FROM [Comercial].[FactTicketSoporte]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Tickets_Soporte",
+            "expression": "COUNTROWS(FactTicketSoporte)",
+            "formatString": "#,0",
+            "displayFolder": "12. NPS y soporte"
+          },
+          {
+            "name": ".Horas_Resolucion",
+            "expression": "AVERAGE(FactTicketSoporte[HorasResolucion])",
+            "formatString": "0.0",
+            "displayFolder": "12. NPS y soporte"
+          },
+          {
+            "name": ".%SLA_Cumplido",
+            "expression": "DIVIDE(SUM(FactTicketSoporte[SlaRecalculado]), [.Tickets_Soporte])",
+            "formatString": "0.0 %;-0.0 %;0.0 %",
+            "displayFolder": "12. NPS y soporte",
+            "description": "Tickets resueltos en 24 horas o menos"
+          }
+        ]
+      },
+      {
+        "name": "FactCuota",
+        "columns": [
+          {
+            "name": "VendedorKey",
+            "dataType": "int64",
+            "sourceColumn": "VendedorKey",
+            "isHidden": true
+          },
+          {
+            "name": "FechaKey",
+            "dataType": "int64",
+            "sourceColumn": "FechaKey",
+            "isHidden": true
+          },
+          {
+            "name": "CuotaMensual",
+            "dataType": "decimal",
+            "sourceColumn": "CuotaMensual",
+            "isHidden": true,
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCuota",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [VendedorKey], [FechaKey], [CuotaMensual] FROM [Comercial].[vw_FactCuota]",
+              "dataSource": "DWH_GCA"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": ".Cuota",
+            "expression": "IF(ISFILTERED(DimCanal[Canal]),\n   -- la cuota es del vendedor: al filtrar por canal se toman los vendedores de ese canal\n   CALCULATE(SUM(FactCuota[CuotaMensual]), TREATAS(VALUES(DimCanal[Canal]), DimVendedor[CanalVendedor])),\n   SUM(FactCuota[CuotaMensual]))",
+            "formatString": "#,0.00",
+            "displayFolder": "01. Cumplimiento de cuota",
+            "description": "Cuota anual del vendedor repartida en 12 meses"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "FV_Fecha",
+        "fromTable": "FactVenta",
+        "fromColumn": "FechaKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FV_Cliente",
+        "fromTable": "FactVenta",
+        "fromColumn": "ClienteKey",
+        "toTable": "DimCliente",
+        "toColumn": "ClienteKey"
+      },
+      {
+        "name": "FV_Vendedor",
+        "fromTable": "FactVenta",
+        "fromColumn": "VendedorKey",
+        "toTable": "DimVendedor",
+        "toColumn": "VendedorKey"
+      },
+      {
+        "name": "FV_Producto",
+        "fromTable": "FactVenta",
+        "fromColumn": "ProductoKey",
+        "toTable": "DimProducto",
+        "toColumn": "ProductoKey"
+      },
+      {
+        "name": "FV_Canal",
+        "fromTable": "FactVenta",
+        "fromColumn": "CanalKey",
+        "toTable": "DimCanal",
+        "toColumn": "CanalKey"
+      },
+      {
+        "name": "FV_Region",
+        "fromTable": "FactVenta",
+        "fromColumn": "RegionKey",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey"
+      },
+      {
+        "name": "FO_FechaCierre",
+        "fromTable": "FactOportunidad",
+        "fromColumn": "FechaCierreKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FO_FechaCreacion",
+        "fromTable": "FactOportunidad",
+        "fromColumn": "FechaCreacionKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey",
+        "isActive": false
+      },
+      {
+        "name": "FO_Cliente",
+        "fromTable": "FactOportunidad",
+        "fromColumn": "ClienteKey",
+        "toTable": "DimCliente",
+        "toColumn": "ClienteKey"
+      },
+      {
+        "name": "FO_Vendedor",
+        "fromTable": "FactOportunidad",
+        "fromColumn": "VendedorKey",
+        "toTable": "DimVendedor",
+        "toColumn": "VendedorKey"
+      },
+      {
+        "name": "FO_Canal",
+        "fromTable": "FactOportunidad",
+        "fromColumn": "CanalKey",
+        "toTable": "DimCanal",
+        "toColumn": "CanalKey"
+      },
+      {
+        "name": "FO_Region",
+        "fromTable": "FactOportunidad",
+        "fromColumn": "RegionKey",
+        "toTable": "DimRegion",
+        "toColumn": "RegionKey"
+      },
+      {
+        "name": "FL_Fecha",
+        "fromTable": "FactLlamada",
+        "fromColumn": "FechaKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FL_Vendedor",
+        "fromTable": "FactLlamada",
+        "fromColumn": "VendedorKey",
+        "toTable": "DimVendedor",
+        "toColumn": "VendedorKey"
+      },
+      {
+        "name": "FL_Cliente",
+        "fromTable": "FactLlamada",
+        "fromColumn": "ClienteKey",
+        "toTable": "DimCliente",
+        "toColumn": "ClienteKey"
+      },
+      {
+        "name": "FC_Fecha",
+        "fromTable": "FactCarrito",
+        "fromColumn": "FechaKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FC_Cliente",
+        "fromTable": "FactCarrito",
+        "fromColumn": "ClienteKey",
+        "toTable": "DimCliente",
+        "toColumn": "ClienteKey"
+      },
+      {
+        "name": "FS_Fecha",
+        "fromTable": "FactSesion",
+        "fromColumn": "FechaKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FE_Fecha",
+        "fromTable": "FactEncuesta",
+        "fromColumn": "FechaKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FE_Cliente",
+        "fromTable": "FactEncuesta",
+        "fromColumn": "ClienteKey",
+        "toTable": "DimCliente",
+        "toColumn": "ClienteKey"
+      },
+      {
+        "name": "FM_Fecha",
+        "fromTable": "FactMarketing",
+        "fromColumn": "FechaKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FT_Fecha",
+        "fromTable": "FactTicketSoporte",
+        "fromColumn": "FechaAperturaKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FT_Cliente",
+        "fromTable": "FactTicketSoporte",
+        "fromColumn": "ClienteKey",
+        "toTable": "DimCliente",
+        "toColumn": "ClienteKey"
+      },
+      {
+        "name": "FQ_Fecha",
+        "fromTable": "FactCuota",
+        "fromColumn": "FechaKey",
+        "toTable": "DimFecha",
+        "toColumn": "FechaKey"
+      },
+      {
+        "name": "FQ_Vendedor",
+        "fromTable": "FactCuota",
+        "fromColumn": "VendedorKey",
+        "toTable": "DimVendedor",
+        "toColumn": "VendedorKey"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

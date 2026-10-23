@@ -1,0 +1,8 @@
+﻿# generados al compilar o ejecutar
+herramientas/generador_ssis/out/
+**/bin/
+**/obj/
+.vs/
+*.ispac
+# configuración personal de Visual Studio / SSAS
+*.settings

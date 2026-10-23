@@ -1,0 +1,278 @@
+vendedor_id,nombre,canal,region,gerente_id,antiguedad,cuota_anual,fecha_ingreso
+VEND-0001,María Marcela Torres,Fuerza Directa,Provincia,GER-005,senior,2017813,13/08/2019
+VEND-0002,Elizabeth María López,Fuerza Directa,Lima,GER-004,senior,2008935,16/01/2023
+VEND-0003,Blanca Becerra,Distribuidor,Lima,GER-006,senior,1275350,19/05/2023
+VEND-0004,Marisol Rolando Ledesma,E-commerce,Quito,GER-012,senior,535574,13/03/2025
+VEND-0005,Evita Lobo Cortés,Inside Sales,Bogotá,GER-012,nuevo,1145712,28/03/2025
+VEND-0006,Aurelio Olivares Calderón,Distribuidor,Lima,GER-009,junior,1036722,14/12/2025
+VEND-0007,Mtro. Alvaro Rico,Inside Sales,Lima,GER-004,nuevo,1163805,21/10/2019
+VEND-0008,Pedro Lozada Nájera,Fuerza Directa,Lima,GER-012,junior,1767682,18/05/2020
+VEND-0009,María Martha Gutiérrez,Fuerza Directa,Bogotá,GER-001,nuevo,2361101,07/01/2026
+VEND-0010,Goyo Lobo Santana,Fuerza Directa,Bogotá,GER-006,junior,1546909,02/11/2025
+VEND-0011,José Eduardo Joaquín Fuentes,Distribuidor,Bogotá,GER-004,junior,1235244,05/01/2021
+VEND-0012,Angie Andrea Padilla,E-commerce,Lima,GER-009,nuevo,672925,04/09/2022
+VEND-0013,Timoteo Porfirio Gaona Meléndez,Distribuidor,Bogotá,GER-009,junior,1121136,09/09/2020
+VEND-0014,Gracia Leal Batalla,Inside Sales,Lima,GER-001,senior,961527,06/07/2026
+VEND-0015,Alberto César Loaiza,Fuerza Directa,Bogotá,GER-011,junior,1637375,24/08/2022
+VEND-0016,Buenaventura Huerta-Jódar,Distribuidor,Santiago,GER-010,senior,1436310,19/09/2023
+VEND-0017,Lic. Jos Gaona,Fuerza Directa,Provincia,GER-002,senior,1976902,29/01/2023
+VEND-0018,Amanda Carmona Corral,Fuerza Directa,Quito,GER-012,senior,2342851,08/02/2020
+VEND-0019,Orlando Flórez Hurtado,E-commerce,Bogotá,GER-003,nuevo,646370,30/03/2023
+VEND-0020,Sr(a). Camila Terán,Distribuidor,Bogotá,GER-010,junior,1029151,12/04/2025
+VEND-0021,Luis Óscar Cárdenas,Fuerza Directa,Lima,GER-004,senior,2292711,12/03/2026
+VEND-0022,Yamid Castellanos,Distribuidor,Lima,GER-011,senior,1366378,04/07/2026
+VEND-0023,Sosimo Miguel Vera Flor,E-commerce,Quito,GER-012,senior,705568,03/12/2021
+VEND-0024,Reyes de Morante,Distribuidor,Quito,GER-012,senior,1373298,28/11/2018
+VEND-0025,Valeria Meléndez Heras,Fuerza Directa,Provincia,GER-007,junior,2013889,16/10/2020
+VEND-0026,María Olga García,Fuerza Directa,Lima,GER-009,junior,1971728,04/04/2025
+VEND-0027,Narciso Talavera Dalmau,E-commerce,Lima,GER-009,junior,497724,26/03/2023
+VEND-0028,Ciro Oviedo Tovar,Distribuidor,Lima,GER-011,junior,1136353,14/06/2020
+VEND-0029,Diego Sandoval,Inside Sales,Santiago,GER-001,junior,833557,21/06/2022
+VEND-0030,Luis David Quintero Fernández,Fuerza Directa,Quito,GER-005,senior,2104767,01/10/2023
+VEND-0031,Andrés Felipe Barral Granados,Fuerza Directa,Quito,GER-006,junior,1547847,12/06/2026
+VEND-0032,Andrea Vilaplana Gárate,Fuerza Directa,Quito,GER-005,senior,2242881,07/06/2024
+VEND-0033,Paola César Vásquez,E-commerce,Lima,GER-011,senior,600560,06/10/2022
+VEND-0034,Roxana Ramírez Falcón,Fuerza Directa,Santiago,GER-002,junior,1872106,27/07/2019
+VEND-0035,Javier Peña Alvarado,Inside Sales,Lima,GER-012,senior,1127767,21/06/2024
+VEND-0036,María Juliana Meneses,Distribuidor,Provincia,GER-004,junior,1025972,09/11/2020
+VEND-0037,Julio Sanabria,Inside Sales,Lima,GER-004,senior,1273677,01/05/2022
+VEND-0038,Jerónimo Iborra-Benet,Fuerza Directa,Bogotá,GER-011,senior,2142720,13/08/2025
+VEND-0039,María Adiela Perea,Fuerza Directa,Provincia,GER-003,senior,2066771,16/08/2026
+VEND-0040,Herminio Torralba Teruel,Fuerza Directa,Provincia,GER-001,junior,1660600,05/02/2026
+VEND-0041,Daniel Ojeda Acevedo,Fuerza Directa,Provincia,GER-011,senior,2039877,30/12/2020
+VEND-0042,Luisa Pilar Ruiz Correa,Fuerza Directa,Santiago,GER-004,senior,2511283,07/04/2021
+VEND-0043,Luis Miguel Barrera Mir,Distribuidor,Quito,GER-008,nuevo,1575522,03/03/2019
+VEND-0044,César Alirio Sánchez Salamanca,Inside Sales,Bogotá,GER-009,senior,957958,26/12/2025
+VEND-0045,Manuel Bayo Gutierrez,Fuerza Directa,Bogotá,GER-009,senior,2031250,06/10/2019
+VEND-0046,Nancy María García Navarro,Fuerza Directa,Bogotá,GER-008,nuevo,2424113,11/03/2023
+VEND-0047,Emilia Yolanda Martínez Griego,Distribuidor,Quito,GER-003,nuevo,1481354,09/02/2022
+VEND-0048,Jenaro Fausto Belmonte Agustí,Inside Sales,Provincia,GER-008,junior,935407,10/01/2024
+VEND-0049,María Sandra Ortiz,Distribuidor,Bogotá,GER-001,junior,1090287,27/03/2026
+VEND-0050,Gil del Cruz,Distribuidor,Lima,GER-001,nuevo,1648774,01/11/2025
+VEND-0051,Mario Ospino,Inside Sales,Lima,GER-012,senior,961467,30/03/2023
+VEND-0052,Emperatriz de Cañizares,E-commerce,Bogotá,GER-003,senior,715062,22/09/2019
+VEND-0053,Calixta del Luján,Fuerza Directa,Lima,GER-001,nuevo,2194704,14/07/2020
+VEND-0054,Alberto Víctor Ortiz,Inside Sales,Provincia,GER-008,senior,980015,17/11/2020
+VEND-0055,Maximiliano Roda Lloret,Fuerza Directa,Quito,GER-011,junior,1689457,10/10/2018
+VEND-0056,Teodoro Frida Cuellar,Fuerza Directa,Santiago,GER-006,nuevo,2236587,02/07/2022
+VEND-0057,Julio González Garcés,Distribuidor,Santiago,GER-012,senior,1505104,07/06/2026
+VEND-0058,Alicia del Colomer,Inside Sales,Santiago,GER-012,senior,1255483,29/10/2019
+VEND-0059,Germán Vinicio Ariño Pallarès,Fuerza Directa,Quito,GER-006,junior,1707202,18/07/2024
+VEND-0060,Galo Ramos Cortes,Fuerza Directa,Provincia,GER-010,senior,1933088,05/02/2026
+VEND-0061,Valero Revilla Amat,Fuerza Directa,Santiago,GER-012,junior,1706392,03/01/2025
+VEND-0062,Yolanda Guzmán,Distribuidor,Lima,GER-007,senior,1313406,05/02/2020
+VEND-0063,Liliana María Ortega,Fuerza Directa,Bogotá,GER-007,junior,1604711,09/09/2025
+VEND-0064,Hilda Esperanza Garica Alva,Fuerza Directa,Provincia,GER-003,senior,2449251,21/05/2020
+VEND-0065,Germán Ángela Leiva Montoya,Fuerza Directa,Bogotá,GER-005,nuevo,2164795,28/01/2023
+VEND-0066,Mtro. Alicia Carrillo,Fuerza Directa,Quito,GER-010,nuevo,2221957,05/04/2020
+VEND-0067,José Hurtado,Inside Sales,Santiago,GER-005,senior,1171666,09/12/2024
+VEND-0068,Samuel Segura,Inside Sales,Quito,GER-007,junior,777883,07/01/2022
+VEND-0069,Carmen Sonia Rodríguez Velandia,Inside Sales,Lima,GER-012,nuevo,1075623,01/08/2024
+VEND-0070,Rosa María Vergara Valencia,E-commerce,Santiago,GER-010,junior,539505,21/05/2024
+VEND-0071,José Luis Fabián Real Morera,Distribuidor,Lima,GER-005,junior,1163462,03/09/2024
+VEND-0072,Dr. Elisa Peres,Inside Sales,Quito,GER-010,nuevo,1153654,28/09/2026
+VEND-0073,Sergio Rebeca Madera,E-commerce,Quito,GER-008,nuevo,682274,28/05/2023
+VEND-0074,Eric Cruz Ropero Montserrat,E-commerce,Quito,GER-012,senior,604032,02/07/2022
+VEND-0075,Nayeli Mario de la O,Inside Sales,Bogotá,GER-005,junior,934004,19/06/2019
+VEND-0076,Ing. Israel Cabán,Distribuidor,Quito,GER-012,junior,1056280,19/06/2024
+VEND-0077,Elvia Concepción Alvarado,Fuerza Directa,Lima,GER-001,senior,2355113,28/10/2020
+VEND-0078,Sr(a). María Eugenia Pedroza,Fuerza Directa,Quito,GER-003,junior,1682202,22/08/2023
+VEND-0079,Leocadia Pulido Hervás,Fuerza Directa,Quito,GER-008,senior,2408673,28/04/2024
+VEND-0080,Liseth Estrada,Distribuidor,Lima,GER-009,nuevo,1554583,13/05/2025
+VEND-0081,Diana Norma Rivera,Distribuidor,Lima,GER-008,junior,1332162,26/06/2023
+VEND-0082,Javier Cañellas Sobrino,Inside Sales,Lima,GER-007,senior,1210908,06/04/2023
+VEND-0083,Rolando Giovanny Ávila,Fuerza Directa,Provincia,GER-009,junior,1702827,01/05/2026
+VEND-0084,Albeiro Vásquez Triana,E-commerce,Bogotá,GER-009,nuevo,627022,26/01/2026
+VEND-0085,Francisco Javier Gutiérrez,E-commerce,Quito,GER-010,junior,519776,06/02/2021
+VEND-0086,John Fernando García Gutiérrez,Fuerza Directa,Lima,GER-011,junior,1644873,07/08/2021
+VEND-0087,Sr(a). Citlali Corona,E-commerce,Santiago,GER-005,nuevo,599146,01/01/2022
+VEND-0088,Sonia Martínez Parra,Inside Sales,Bogotá,GER-011,senior,1194468,15/09/2022
+VEND-0089,Emiliano Peres Ordóñez,E-commerce,Quito,GER-001,senior,550211,28/08/2024
+VEND-0090,Fortunata Tapia-Aguado,Fuerza Directa,Santiago,GER-002,nuevo,2186979,13/04/2021
+VEND-0091,Pablo Treviño,Inside Sales,Lima,GER-001,junior,1002697,19/05/2026
+VEND-0092,Constanza Llamas Ruano,Fuerza Directa,Provincia,GER-004,junior,1733180,28/12/2018
+VEND-0093,Yolanda Leticia de Jesús Robles,Fuerza Directa,Santiago,GER-011,junior,1664311,14/01/2024
+VEND-0094,Marlene Vega,Fuerza Directa,Bogotá,GER-002,junior,1783077,22/12/2018
+VEND-0095,Bernarda Serrano Espada,Fuerza Directa,Lima,GER-009,nuevo,2367351,15/12/2020
+VEND-0096,Eric María Elena Mena Miranda,Fuerza Directa,Bogotá,GER-009,junior,1999044,09/02/2021
+VEND-0097,Ariadna Mariano Almaraz Tirado,Fuerza Directa,Provincia,GER-005,nuevo,2449567,20/09/2021
+VEND-0098,Rosario Arjona Anguita,E-commerce,Lima,GER-009,senior,629331,09/06/2020
+VEND-0099,Calista Dafne Cases Sáenz,Inside Sales,Quito,GER-005,junior,953170,19/09/2019
+VEND-0100,Cristina Carmen Arias Calderón,Fuerza Directa,Santiago,GER-010,senior,2554028,07/11/2024
+VEND-0101,Fabricio Campoy Amigó,E-commerce,Bogotá,GER-008,senior,563065,22/08/2023
+VEND-0102,Jhon Forero García,Inside Sales,Bogotá,GER-012,junior,785988,22/10/2025
+VEND-0103,Luz Constanza Gaitán Carvajal,E-commerce,Provincia,GER-001,senior,583706,07/07/2025
+VEND-0104,Carolina Osorio,Fuerza Directa,Quito,GER-003,junior,1974170,01/05/2019
+VEND-0105,José Camilo Rincón,E-commerce,Santiago,GER-002,senior,546765,28/10/2021
+VEND-0106,Guillermo Óscar Ardila Paz,E-commerce,Quito,GER-008,nuevo,669739,25/12/2023
+VEND-0107,Miguel Yeison Vega Ruiz,E-commerce,Lima,GER-009,junior,570487,22/10/2025
+VEND-0108,Valero Sanmartín-Hervás,Distribuidor,Santiago,GER-003,junior,1068187,04/08/2023
+VEND-0109,Enrique Zapata Valencia,Fuerza Directa,Lima,GER-005,senior,2587309,19/07/2020
+VEND-0110,Jacinto Gilberto Ybarra Leal,E-commerce,Quito,GER-005,senior,673203,30/10/2018
+VEND-0111,María Consuelo Reyes Uribe,Fuerza Directa,Lima,GER-001,junior,2045188,17/10/2022
+VEND-0112,Daniel José Jiménez Parra,Inside Sales,Lima,GER-002,senior,1077130,07/05/2021
+VEND-0113,Felipe Sebastián Salazar,Fuerza Directa,Quito,GER-006,junior,1978941,04/06/2023
+VEND-0114,María Elena Genaro Malave Heredia,Fuerza Directa,Santiago,GER-011,senior,2184851,08/10/2019
+VEND-0115,Cecilia Astrid Angarita Barrios,Fuerza Directa,Lima,GER-005,senior,2344069,01/08/2020
+VEND-0116,Fernando William Ochoa Hurtado,Distribuidor,Provincia,GER-002,senior,1432764,28/10/2025
+VEND-0117,Danilo Geraldo Escobar Mate,Inside Sales,Bogotá,GER-002,junior,859029,06/10/2024
+VEND-0118,Marcela Bastidas Cortés,Inside Sales,Santiago,GER-007,junior,906373,26/10/2019
+VEND-0119,Luis José Gutiérrez Acosta,Distribuidor,Santiago,GER-001,junior,1197162,23/04/2020
+VEND-0120,Tomás Tejedor-Carbonell,Fuerza Directa,Bogotá,GER-005,senior,2147004,24/02/2022
+VEND-0121,Reynaldo Avilés Coronado,Fuerza Directa,Quito,GER-009,junior,1778464,23/08/2025
+VEND-0122,Andrés Vargas,Inside Sales,Bogotá,GER-004,senior,1017635,31/03/2025
+VEND-0123,Ing. Serafín Gastélum,Fuerza Directa,Provincia,GER-002,junior,1855045,23/12/2021
+VEND-0124,Héctor Villalobos,Fuerza Directa,Santiago,GER-010,junior,1625586,04/05/2021
+VEND-0125,Viviana Mena,Fuerza Directa,Lima,GER-010,junior,2012877,24/01/2024
+VEND-0126,Natalio Bertrán-Crespo,Fuerza Directa,Lima,GER-010,junior,1961682,22/03/2020
+VEND-0127,Ana Adriana Barrios,Inside Sales,Lima,GER-001,senior,1049696,21/03/2021
+VEND-0128,Ernesto del Santiago,Distribuidor,Santiago,GER-008,nuevo,1564107,03/08/2024
+VEND-0129,Rufino Figuerola-Rodríguez,Fuerza Directa,Bogotá,GER-011,senior,2082895,17/05/2023
+VEND-0130,Wálter Larrañaga Cisneros,Distribuidor,Provincia,GER-012,junior,1058582,02/04/2019
+VEND-0131,Manuel Reinaldo Malo Saavedra,Fuerza Directa,Bogotá,GER-009,junior,1928199,24/09/2022
+VEND-0132,Gustavo Valderrama,Fuerza Directa,Quito,GER-006,senior,2133561,03/05/2023
+VEND-0133,Ariadna Zamora,Fuerza Directa,Provincia,GER-004,junior,1721756,23/04/2026
+VEND-0134,Salma Fidel Alvarez Bustos,Inside Sales,Bogotá,GER-006,junior,923447,23/06/2024
+VEND-0135,Catherine Sandoval,Distribuidor,Bogotá,GER-009,nuevo,1627421,24/08/2023
+VEND-0136,Joel Villena Salamanca,Inside Sales,Lima,GER-006,junior,928559,14/04/2020
+VEND-0137,Víctor Rincón López,Fuerza Directa,Lima,GER-007,nuevo,2424651,20/03/2022
+VEND-0138,Yuridia Bernardo Cruz Mendoza,Fuerza Directa,Santiago,GER-009,nuevo,2314523,23/08/2024
+VEND-0139,Wilfrido Karla Urbina Arce,Fuerza Directa,Provincia,GER-002,nuevo,2447121,29/06/2019
+VEND-0140,Irene Camilo Páez Serrano,Fuerza Directa,Provincia,GER-006,junior,1891067,03/05/2024
+VEND-0141,Camilo Juan Morales Tovar,E-commerce,Quito,GER-003,junior,550787,03/07/2022
+VEND-0142,Eliseo Castro,Fuerza Directa,Provincia,GER-004,senior,2255137,21/06/2022
+VEND-0143,Luis Frank León Moreno,Fuerza Directa,Lima,GER-006,senior,2304836,21/05/2021
+VEND-0144,Esperanza López,Fuerza Directa,Bogotá,GER-001,junior,1729384,01/09/2022
+VEND-0145,Josep Manzanares Verdú,Inside Sales,Bogotá,GER-002,junior,852036,25/01/2021
+VEND-0146,Mariana Guerrero,Distribuidor,Lima,GER-001,senior,1327513,07/06/2023
+VEND-0147,Celestina Verdejo Cerezo,Inside Sales,Quito,GER-001,senior,1243371,03/02/2021
+VEND-0148,Natividad Gabriela Acevedo Leyva,Distribuidor,Bogotá,GER-011,senior,1697253,13/04/2021
+VEND-0149,León Daniel Ramos Quintero,Fuerza Directa,Lima,GER-006,senior,1944964,13/12/2021
+VEND-0150,Elena Evelio Vázquez Olivera,Distribuidor,Santiago,GER-012,senior,1348645,09/01/2026
+VEND-0151,Ilse Rojas Olivárez,Fuerza Directa,Santiago,GER-010,senior,2525310,22/05/2024
+VEND-0152,Esther Gómez Sierra,Fuerza Directa,Quito,GER-008,senior,2208916,26/07/2021
+VEND-0153,Armida Zorrilla Saura,Fuerza Directa,Bogotá,GER-007,junior,1766922,20/11/2024
+VEND-0154,Tomasa Cortes Benavides,Inside Sales,Bogotá,GER-002,junior,911759,23/05/2025
+VEND-0155,Sofía Leonel Blanco Méndez,E-commerce,Quito,GER-006,nuevo,662239,19/01/2026
+VEND-0156,Edgardo Pineda Murcia,Distribuidor,Lima,GER-001,senior,1515057,01/03/2026
+VEND-0157,Natalia Moreno,E-commerce,Santiago,GER-001,nuevo,666741,30/07/2026
+VEND-0158,Aurora Manuel Calvillo,Fuerza Directa,Lima,GER-005,senior,2504317,23/09/2024
+VEND-0159,Carina Marí Andres,Fuerza Directa,Santiago,GER-004,nuevo,2341336,02/07/2021
+VEND-0160,Gastón Glauco Rosa Coello,Inside Sales,Bogotá,GER-004,junior,960008,06/04/2023
+VEND-0161,Dr. David del Río,Distribuidor,Quito,GER-004,senior,1597281,05/12/2023
+VEND-0162,Dr. Miriam Vergara,Inside Sales,Santiago,GER-008,senior,1153145,19/09/2020
+VEND-0163,María Luisa Florencia Aguirre Rivero,Fuerza Directa,Bogotá,GER-012,senior,2528000,04/07/2024
+VEND-0164,María Garcés Ojeda,Fuerza Directa,Lima,GER-008,junior,2000947,06/03/2024
+VEND-0165,María Eugenia Hermelinda Farías Olivo,E-commerce,Quito,GER-008,senior,535567,26/08/2019
+VEND-0166,Marianela Palomar Marqués,Distribuidor,Santiago,GER-009,junior,1172687,03/04/2021
+VEND-0167,Eli Aguiló Avilés,Distribuidor,Provincia,GER-007,senior,1330265,30/01/2025
+VEND-0168,Estela Samuel Mora Gaona,Fuerza Directa,Lima,GER-007,nuevo,2431090,11/05/2020
+VEND-0169,Pedro Camargo,Inside Sales,Quito,GER-009,junior,965947,14/07/2024
+VEND-0170,Vito Ariza Mendizábal,Fuerza Directa,Santiago,GER-003,senior,2181264,10/01/2019
+VEND-0171,Arturo Luis Jiménez,Inside Sales,Provincia,GER-002,junior,894826,11/04/2022
+VEND-0172,Blas Paz,E-commerce,Quito,GER-011,nuevo,610286,05/01/2023
+VEND-0173,Francisco Mauricio Lucero,Inside Sales,Bogotá,GER-001,senior,1219667,23/02/2026
+VEND-0174,Mayte Benítez Cisneros,Fuerza Directa,Lima,GER-001,junior,1626139,22/01/2026
+VEND-0175,Gerson Cifuentes Morales,E-commerce,Lima,GER-012,junior,505260,11/11/2018
+VEND-0176,Sr(a). María Elena Negrete,Fuerza Directa,Lima,GER-007,junior,1760466,11/02/2025
+VEND-0177,Dario Pinto,Distribuidor,Lima,GER-001,junior,1033158,31/08/2019
+VEND-0178,Leidy Natalia Barbosa Valencia,Inside Sales,Quito,GER-003,nuevo,1157241,16/08/2020
+VEND-0179,Yolanda Cristina Bermúdez,Fuerza Directa,Bogotá,GER-004,junior,1628241,20/03/2022
+VEND-0180,Alonso Arcos Mayo,E-commerce,Provincia,GER-010,junior,559615,24/09/2019
+VEND-0181,Vicente de Pont,Inside Sales,Santiago,GER-002,senior,1248860,24/11/2021
+VEND-0182,William Bonilla Rivas,Fuerza Directa,Quito,GER-007,junior,1892822,02/08/2019
+VEND-0183,Lic. Gilberto Apodaca,Fuerza Directa,Lima,GER-003,senior,2511536,23/11/2021
+VEND-0184,Isidora Guzman Pareja,Inside Sales,Santiago,GER-008,senior,1200015,29/07/2024
+VEND-0185,Mtro. Anel Otero,E-commerce,Santiago,GER-005,junior,446162,10/05/2020
+VEND-0186,Apolonia Garay Almazán,Fuerza Directa,Lima,GER-010,nuevo,2207662,08/06/2025
+VEND-0187,Carmen Raúl Flórez,Fuerza Directa,Lima,GER-012,junior,1910131,20/10/2025
+VEND-0188,Margarita Silvia Moreno Guevara,E-commerce,Quito,GER-002,junior,479459,07/10/2018
+VEND-0189,Catalina Paola Henríquez,Fuerza Directa,Santiago,GER-009,junior,1765508,05/09/2019
+VEND-0190,Patricia Mosquera,Fuerza Directa,Provincia,GER-008,senior,1989611,02/10/2023
+VEND-0191,Delia Jaimes Ávila,Inside Sales,Provincia,GER-001,junior,895890,19/01/2025
+VEND-0192,Sr(a). Andrea Rolón,Inside Sales,Santiago,GER-009,senior,1043287,12/05/2025
+VEND-0193,Ing. Bianca Razo,Fuerza Directa,Santiago,GER-010,senior,2520386,17/08/2020
+VEND-0194,Juliana Gamboa,Distribuidor,Quito,GER-005,senior,1641774,07/03/2023
+VEND-0195,Trinidad Angulo,Inside Sales,Lima,GER-006,junior,989030,26/10/2022
+VEND-0196,Bianca Salas,Fuerza Directa,Lima,GER-009,nuevo,2384612,25/06/2026
+VEND-0197,Ariadna Medina Zúñiga,Fuerza Directa,Quito,GER-010,junior,2023782,21/04/2019
+VEND-0198,Mateo Morcillo-Piquer,Fuerza Directa,Bogotá,GER-002,junior,1619793,04/04/2023
+VEND-0199,Natalia Zedillo,Distribuidor,Lima,GER-010,senior,1305712,03/08/2019
+VEND-0200,Jennifer Camila Solano,Distribuidor,Bogotá,GER-011,senior,1408705,07/02/2026
+VEND-0201,Jennifer Gracia Riba,Inside Sales,Bogotá,GER-006,senior,1001813,12/10/2025
+VEND-0202,Linda Cadena,Inside Sales,Lima,GER-003,junior,925671,16/05/2022
+VEND-0203,José Luis Cristian Rojo Barrera,Fuerza Directa,Bogotá,GER-002,junior,1866600,26/10/2025
+VEND-0204,Inocencio Bárcena Peralta,Inside Sales,Lima,GER-001,junior,898783,23/06/2023
+VEND-0205,Mar Murcia-Carvajal,Distribuidor,Bogotá,GER-003,junior,1047996,01/10/2021
+VEND-0206,Oswaldo Camargo Bolaños,Fuerza Directa,Provincia,GER-012,nuevo,2168409,26/05/2021
+VEND-0207,Reynaldo Sarabia Galindo,E-commerce,Lima,GER-007,senior,628994,30/04/2024
+VEND-0208,Bianca Jerónimo Valadez,Fuerza Directa,Provincia,GER-005,senior,2424849,20/09/2019
+VEND-0209,Dr. Luis Miguel Valentín,Distribuidor,Quito,GER-002,senior,1495241,18/12/2023
+VEND-0210,Angie Navarro,Fuerza Directa,Provincia,GER-010,senior,2309578,06/01/2021
+VEND-0211,Elías Mendizábal Nicolás,E-commerce,Quito,GER-007,junior,430092,17/10/2018
+VEND-0212,Lorenzo Pérez Baños,Distribuidor,Lima,GER-002,senior,1464793,17/01/2025
+VEND-0213,Luz Contreras,Distribuidor,Santiago,GER-003,nuevo,1611506,25/04/2022
+VEND-0214,Cristina José Eduardo Marrero Meléndez,Fuerza Directa,Quito,GER-012,junior,1789773,25/10/2023
+VEND-0215,Casemiro Criado Ayala,E-commerce,Bogotá,GER-007,junior,434803,09/06/2019
+VEND-0216,Virginia Pineda,Fuerza Directa,Bogotá,GER-009,senior,2410553,28/11/2023
+VEND-0217,Georgina Galván,Inside Sales,Bogotá,GER-002,senior,964485,17/09/2019
+VEND-0218,Blanca Limón,E-commerce,Lima,GER-002,senior,707325,06/07/2024
+VEND-0219,Cristian Jesús Torres Bustamante,Distribuidor,Provincia,GER-001,junior,1164695,22/10/2018
+VEND-0220,Curro Rodolfo Cervantes Jaume,Inside Sales,Quito,GER-009,senior,1215542,14/07/2021
+VEND-0221,Jose Ramón Ros Echevarría,Fuerza Directa,Bogotá,GER-001,senior,1987070,23/12/2021
+VEND-0222,Tatiana Elvira Arévalo García,Fuerza Directa,Lima,GER-005,junior,1552730,07/02/2019
+VEND-0223,María Luisa Bernal Marroquín,Fuerza Directa,Provincia,GER-001,junior,1741480,24/05/2022
+VEND-0224,Guillermo Guerrero González,Fuerza Directa,Provincia,GER-005,senior,1972852,04/07/2021
+VEND-0225,Jimena Selena Paredes Borja,Fuerza Directa,Provincia,GER-011,senior,2522514,04/12/2025
+VEND-0226,Isaías del Zamora,E-commerce,Santiago,GER-008,nuevo,654654,09/02/2022
+VEND-0227,Estela Isabela de la Garza Bermúdez,Inside Sales,Bogotá,GER-002,junior,868704,17/02/2024
+VEND-0228,Lina Ferrera,Fuerza Directa,Provincia,GER-005,senior,1951544,23/09/2021
+VEND-0229,Paola Sánchez Ramírez,E-commerce,Provincia,GER-010,senior,629693,16/01/2020
+VEND-0230,Andrea Ximena Zapata,Fuerza Directa,Bogotá,GER-001,junior,1613104,16/03/2025
+VEND-0231,Héctor Alex Franco Ospino,Distribuidor,Lima,GER-009,junior,1233458,04/02/2026
+VEND-0232,Carlos Andrés Marín,Inside Sales,Lima,GER-003,senior,1048374,08/07/2025
+VEND-0233,Sr(a). Jesús Sarabia,Inside Sales,Lima,GER-010,senior,1229462,20/05/2021
+VEND-0234,Alfonso Báez,Distribuidor,Quito,GER-008,nuevo,1426143,25/10/2025
+VEND-0235,Verónica Bustamante Villegas,Distribuidor,Lima,GER-005,junior,1099266,05/01/2022
+VEND-0236,Ing. Alma Rascón,Distribuidor,Lima,GER-008,senior,1672308,15/04/2024
+VEND-0237,María Del Carmen Tamarit Vallejo,Inside Sales,Provincia,GER-008,junior,948064,09/04/2019
+VEND-0238,Jacobo Bravo Santana,Inside Sales,Lima,GER-003,senior,1249254,18/03/2020
+VEND-0239,Paulino del Saavedra,Fuerza Directa,Lima,GER-011,nuevo,2451405,11/03/2023
+VEND-0240,Rosa Prada Giraldo,Fuerza Directa,Quito,GER-005,nuevo,2431747,08/07/2024
+VEND-0241,Dary Jaimes,Fuerza Directa,Santiago,GER-011,nuevo,2444187,19/07/2021
+VEND-0242,Nidia del Luz,Fuerza Directa,Quito,GER-012,senior,1916810,24/11/2024
+VEND-0243,Claudia Murillo Hernández,Fuerza Directa,Quito,GER-001,senior,1990695,19/05/2021
+VEND-0244,Carlos Blanco García,Fuerza Directa,Lima,GER-006,senior,2103756,12/12/2021
+VEND-0245,Eliecer Fredy Salcedo,Fuerza Directa,Bogotá,GER-012,senior,2339520,28/07/2024
+VEND-0246,Paula Laura Morales,E-commerce,Lima,GER-004,senior,543969,15/05/2021
+VEND-0247,Francisco Torre,Fuerza Directa,Santiago,GER-010,nuevo,2157048,01/09/2020
+VEND-0248,Antonio Marqués Cadenas,Fuerza Directa,Provincia,GER-012,senior,2418515,20/04/2025
+VEND-0249,Vanessa Pardo,Fuerza Directa,Santiago,GER-011,nuevo,2262994,10/11/2019
+VEND-0250,Carlos Díaz Aguirre,Distribuidor,Lima,GER-002,nuevo,1649353,16/08/2025
+VEND-0251,Amada Reig Pastor,Fuerza Directa,Bogotá,GER-007,nuevo,2238201,11/11/2024
+VEND-0252,María Jesús López Sanchez,Distribuidor,Santiago,GER-011,junior,1118373,15/04/2023
+VEND-0253,Sandalio Ruben Somoza Ferrera,E-commerce,Lima,GER-005,junior,561429,06/07/2024
+VEND-0254,Miguel Jorge Flórez Silva,E-commerce,Provincia,GER-005,senior,715746,09/09/2025
+VEND-0255,Bernardita Trini Ibáñez Azorin,Fuerza Directa,Provincia,GER-003,junior,1546812,31/10/2022
+VEND-0256,Sr(a). Noemí Castellanos,Distribuidor,Bogotá,GER-011,senior,1710687,16/06/2019
+VEND-0257,Jafet Vilanova-Colom,Fuerza Directa,Provincia,GER-011,senior,2482729,10/07/2019
+VEND-0258,Verónica Olmedo Amor,Distribuidor,Quito,GER-005,nuevo,1642690,13/03/2019
+VEND-0259,Mtro. Eugenio Olvera,Fuerza Directa,Bogotá,GER-007,nuevo,2368878,06/12/2021
+VEND-0260,Feliciano Cabeza Naranjo,Fuerza Directa,Lima,GER-006,junior,1844265,30/11/2019
+VEND-0228,Lina Ferrera,Fuerza Directa,Provincia,GER-005,senior,1951544,23/09/2021
+VEND-0229,Paola Sánchez Ramírez,E-commerce,Provincia,GER-010,senior,629693,16/01/2020
+VEND-0230,Andrea Ximena Zapata,Fuerza Directa,Bogotá,GER-001,junior,1613104,16/03/2025
+VEND-0231,Héctor Alex Franco Ospino,Distribuidor,Lima,GER-009,junior,1233458,04/02/2026
+VEND-0242,Nidia del Luz,Fuerza Directa,Quito,GER-012,senior,1916810,24/11/2024
+VEND-0243,Claudia Murillo Hernández,Fuerza Directa,Quito,GER-001,senior,1990695,19/05/2021
+VEND-0244,Carlos Blanco García,Fuerza Directa,Lima,GER-006,senior,2103756,12/12/2021
+VEND-0245,Eliecer Fredy Salcedo,Fuerza Directa,Bogotá,GER-012,senior,2339520,28/07/2024
+VEND-0246,Paula Laura Morales,E-commerce,Lima,GER-004,senior,543969,15/05/2021
+VEND-0247,Francisco Torre,Fuerza Directa,Santiago,GER-010,nuevo,2157048,01/09/2020
+VEND-0248,Antonio Marqués Cadenas,Fuerza Directa,Provincia,GER-012,senior,2418515,20/04/2025
+VEND-0230,Andrea Ximena Zapata,Fuerza Directa,Bogotá,GER-001,junior,1613104,16/03/2025
+VEND-0231,Héctor Alex Franco Ospino,Distribuidor,Lima,GER-009,junior,1233458,04/02/2026
+VEND-0242,Nidia del Luz,Fuerza Directa,Quito,GER-012,senior,1916810,24/11/2024
+VEND-0243,Claudia Murillo Hernández,Fuerza Directa,Quito,GER-001,senior,1990695,19/05/2021
+VEND-0244,Carlos Blanco García,Fuerza Directa,Lima,GER-006,senior,2103756,12/12/2021
+VEND-0245,Eliecer Fredy Salcedo,Fuerza Directa,Bogotá,GER-012,senior,2339520,28/07/2024

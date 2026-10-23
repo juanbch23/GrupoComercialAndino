@@ -1,0 +1,1725 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/22/2026 9:12:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-IO596P6A"
+  DTS:CreatorName="LAPTOP-IO596P6A\Juan"
+  DTS:DTSID="{3E804C9D-D82C-49AC-B28B-78B9D272E837}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1000.7"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="FactLlamada"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{A06D39E9-A12B-48F5-9A0F-DDF059DCEDC0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{09DCBB8E-EA3F-4561-9386-2955B287367A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{37E8052F-D57D-40E9-BAA9-A63D9AA085EE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8C2BE6C0-A3B4-442F-9BFE-1BBA390A7F34}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">[Comercial].[FactLlamada]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FACT LLAMADA"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{CD2E1E8A-779B-4C8D-B41E-6E25D15EEA5B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FACT LLAMADA"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          autoAdjustBufferSize="true"
+          version="1">
+          <components>
+            <component
+              refId="Package\FACT LLAMADA\Columna derivada Motivo"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Columna derivada Motivo"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FACT LLAMADA\Columna derivada Motivo.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\Columna derivada Motivo.Inputs[Entrada de columna derivada].Columns[MotivoDescarte]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="MotivoDescarte"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\FACT LLAMADA\Columna derivada Motivo.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]"
+                      dataType="wstr"
+                      description="Motivo del descarte"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]"
+                      name="Motivo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}) ? (DT_WSTR,200)"Llave sin coincidencia en una dimensión" : #{Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(MotivoDescarte) ? (DT_WSTR,200)"Llave sin coincidencia en una dimensión" : MotivoDescarte</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\FACT LLAMADA\Columna derivada Motivo.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT LLAMADA\DimCliente"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="DimCliente"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ClienteKey], [ClienteID] FROM [Comercial].[DimCliente] WHERE [ClienteKey] &gt; 0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClienteKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ClienteID" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT LLAMADA\DimCliente.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT LLAMADA\DimCliente.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\DimCliente.Inputs[Entrada de búsqueda].Columns[cliente_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="cliente_id"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">ClienteID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimCliente.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]"
+                      name="ClienteKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">ClienteKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimCliente.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimCliente.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT LLAMADA\DimFecha"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="DimFecha"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [FechaKey] FROM [GENERICO].[DimFecha] WHERE [FechaKey] &gt; 0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="FechaKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT LLAMADA\DimFecha.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT LLAMADA\DimFecha.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\DimFecha.Inputs[Entrada de búsqueda].Columns[FechaNum]"
+                      cachedDataType="i4"
+                      cachedName="FechaNum"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">FechaKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimFecha.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]"
+                      name="FechaKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">FechaKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimFecha.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimFecha.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT LLAMADA\DimVendedor"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="DimVendedor"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [VendedorKey], [VendedorID] FROM [Comercial].[DimVendedor] WHERE [VendedorKey] &gt; 0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VendedorKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VendedorID" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT LLAMADA\DimVendedor.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT LLAMADA\DimVendedor.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\DimVendedor.Inputs[Entrada de búsqueda].Columns[vendedor_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="vendedor_id"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[vendedor_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">VendedorID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimVendedor.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas coincidentes de búsqueda].Columns[VendedorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas coincidentes de búsqueda].Columns[VendedorKey]"
+                      name="VendedorKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">VendedorKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimVendedor.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\FACT LLAMADA\DimVendedor.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT LLAMADA\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional].Columns[MotivoDescarte]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="MotivoDescarte"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional].Columns[FechaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaKey"
+                      lineageId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional].Columns[VendedorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendedorKey"
+                      lineageId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas coincidentes de búsqueda].Columns[VendedorKey]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      lineageId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT LLAMADA\División condicional.Outputs[bad]"
+                  description="Filas descartadas por limpieza o con alguna llave sin coincidencia"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="bad"
+                  synchronousInputId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">![ISNULL](#{Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}) || [ISNULL](#{Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]}) || [ISNULL](#{Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas coincidentes de búsqueda].Columns[VendedorKey]}) || [ISNULL](#{Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(MotivoDescarte) || ISNULL(FechaKey) || ISNULL(VendedorKey) || ISNULL(ClienteKey)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\División condicional.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT LLAMADA\ErrorFactLlamada"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="ErrorFactLlamada"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Comercial].[ErrorFactLlamada]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT LLAMADA\ErrorFactLlamada.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[FilaOrigen]"
+                      cachedDataType="i4"
+                      cachedName="FilaOrigen"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[llamada_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="llamada_id"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[llamada_id]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[llamada_id]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[fecha]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[vendedor_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="vendedor_id"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[vendedor_id]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[vendedor_id]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[cliente_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="cliente_id"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[disposicion_origen]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="disposicion_origen"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[disposicion_origen]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[disposicion_origen]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[FechaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaKey"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaKey]"
+                      lineageId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[VendedorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendedorKey"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[VendedorKey]"
+                      lineageId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas coincidentes de búsqueda].Columns[VendedorKey]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      lineageId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].Columns[Motivo]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Motivo"
+                      externalMetadataColumnId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[Motivo]"
+                      lineageId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[llamada_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="llamada_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[vendedor_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[disposicion_origen]"
+                      dataType="wstr"
+                      length="40"
+                      name="disposicion_origen" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaKey]"
+                      dataType="i4"
+                      name="FechaKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[VendedorKey]"
+                      dataType="i4"
+                      name="VendedorKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[Motivo]"
+                      dataType="wstr"
+                      length="200"
+                      name="Motivo" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaRegistro]"
+                      dataType="dbTimeStamp"
+                      name="FechaRegistro" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT LLAMADA\ErrorFactLlamada.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\ErrorFactLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\ErrorFactLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\ErrorFactLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT LLAMADA\FactLlamada"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="FactLlamada"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Comercial].[FactLlamada]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT LLAMADA\FactLlamada.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].Columns[LlamadaID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LlamadaID"
+                      externalMetadataColumnId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[LlamadaID]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[LlamadaID]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].Columns[DuracionSeg]"
+                      cachedDataType="i4"
+                      cachedName="DuracionSeg"
+                      externalMetadataColumnId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[DuracionSeg]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[DuracionSeg]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].Columns[Disposicion]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Disposicion"
+                      externalMetadataColumnId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[Disposicion]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Disposicion]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].Columns[EsVenta]"
+                      cachedDataType="bool"
+                      cachedName="EsVenta"
+                      externalMetadataColumnId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[EsVenta]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EsVenta]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].Columns[EsVentaInconsistente]"
+                      cachedDataType="bool"
+                      cachedName="EsVentaInconsistente"
+                      externalMetadataColumnId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[EsVentaInconsistente]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EsVentaInconsistente]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].Columns[FechaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaKey"
+                      externalMetadataColumnId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaKey]"
+                      lineageId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].Columns[VendedorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendedorKey"
+                      externalMetadataColumnId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[VendedorKey]"
+                      lineageId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas coincidentes de búsqueda].Columns[VendedorKey]" />
+                    <inputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      externalMetadataColumnId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      lineageId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[LlamadaID]"
+                      dataType="wstr"
+                      length="20"
+                      name="LlamadaID" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaKey]"
+                      dataType="i4"
+                      name="FechaKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[VendedorKey]"
+                      dataType="i4"
+                      name="VendedorKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[DuracionSeg]"
+                      dataType="i4"
+                      name="DuracionSeg" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[Disposicion]"
+                      dataType="wstr"
+                      length="40"
+                      name="Disposicion" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[EsVenta]"
+                      dataType="bool"
+                      name="EsVenta" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB].ExternalColumns[EsVentaInconsistente]"
+                      dataType="bool"
+                      name="EsVentaInconsistente" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT LLAMADA\FactLlamada.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\FactLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\FactLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\FactLlamada.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB (limpieza)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH S AS (
+    SELECT l.*, COALESCE(TRY_CONVERT(DATE, l.[fecha], 103), TRY_CONVERT(DATE, l.[fecha], 23)) AS [FechaD],
+           ROW_NUMBER() OVER (PARTITION BY l.[llamada_id] ORDER BY l.[FilaOrigen]) AS [rnId],
+           CASE WHEN EXISTS (SELECT 1 FROM [GCA].[StageCliente] k WHERE k.[cliente_id] = l.[cliente_id]) THEN 1 ELSE 0 END AS [ClienteExiste]
+      FROM [GCA].[StageLlamada] l)
+SELECT [FilaOrigen], [llamada_id], [fecha], [vendedor_id], [cliente_id], [disposicion] AS [disposicion_origen],
+       [llamada_id] AS [LlamadaID],
+       CONVERT(INT, CONVERT(CHAR(8), [FechaD], 112)) AS [FechaNum],
+       TRY_CONVERT(INT, [duracion_seg]) AS [DuracionSeg],
+       CAST(LTRIM(RTRIM([disposicion])) AS NVARCHAR(40)) AS [Disposicion],
+       CAST(CASE WHEN [es_venta] = N'1' THEN 1 ELSE 0 END AS BIT) AS [EsVenta],
+       CAST(CASE WHEN [es_venta] = N'1' AND [disposicion] IN (N'No contactado', N'Rechazo') THEN 1 ELSE 0 END AS BIT) AS [EsVentaInconsistente],
+       CAST(CASE WHEN [rnId] &gt; 1 THEN N'Duplicado exacto: llamada_id repetido (se conservó la primera aparición)'
+                 WHEN [FechaD] IS NULL THEN N'Fecha inválida'
+                 WHEN [ClienteExiste] = 0 THEN N'Cliente inexistente en el maestro (' + [cliente_id] + N')'
+                 WHEN TRY_CONVERT(INT, [duracion_seg]) IS NULL OR TRY_CONVERT(INT, [duracion_seg]) &lt; 0 THEN N'Duración inválida'
+            END AS NVARCHAR(200)) AS [MotivoDescarte]
+  FROM S</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Connections[OleDbConnection]"
+                  connectionManagerID="{C367306B-32DC-45CB-9924-5BE02CFDB88F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB STAGE_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FilaOrigen]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]"
+                      name="FilaOrigen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[llamada_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[llamada_id]"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[llamada_id]"
+                      name="llamada_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      name="fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[vendedor_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[vendedor_id]"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[vendedor_id]"
+                      name="vendedor_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_id]"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]"
+                      name="cliente_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[disposicion_origen]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[disposicion_origen]"
+                      length="40"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[disposicion_origen]"
+                      name="disposicion_origen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[LlamadaID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[LlamadaID]"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[LlamadaID]"
+                      name="LlamadaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FechaNum]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]"
+                      name="FechaNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[DuracionSeg]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[DuracionSeg]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[DuracionSeg]"
+                      name="DuracionSeg"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Disposicion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[Disposicion]"
+                      length="40"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Disposicion]"
+                      name="Disposicion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EsVenta]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[EsVenta]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EsVenta]"
+                      name="EsVenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EsVentaInconsistente]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[EsVentaInconsistente]"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EsVentaInconsistente]"
+                      name="EsVentaInconsistente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[MotivoDescarte]"
+                      length="200"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]"
+                      name="MotivoDescarte"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[llamada_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="llamada_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[vendedor_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[disposicion_origen]"
+                      dataType="wstr"
+                      length="40"
+                      name="disposicion_origen" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[LlamadaID]"
+                      dataType="wstr"
+                      length="20"
+                      name="LlamadaID" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FechaNum]"
+                      dataType="i4"
+                      name="FechaNum" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[DuracionSeg]"
+                      dataType="i4"
+                      name="DuracionSeg" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[Disposicion]"
+                      dataType="wstr"
+                      length="40"
+                      name="Disposicion" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[EsVenta]"
+                      dataType="bool"
+                      name="EsVenta" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[EsVentaInconsistente]"
+                      dataType="bool"
+                      name="EsVentaInconsistente" />
+                    <externalMetadataColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[MotivoDescarte]"
+                      dataType="wstr"
+                      length="200"
+                      name="MotivoDescarte" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FilaOrigen]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FilaOrigen]"
+                      name="FilaOrigen" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[llamada_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[llamada_id]"
+                      name="llamada_id" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      name="fecha" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[vendedor_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[vendedor_id]"
+                      name="vendedor_id" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[cliente_id]"
+                      name="cliente_id" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[disposicion_origen]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[disposicion_origen]"
+                      name="disposicion_origen" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[LlamadaID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[LlamadaID]"
+                      name="LlamadaID" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FechaNum]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FechaNum]"
+                      name="FechaNum" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[DuracionSeg]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[DuracionSeg]"
+                      name="DuracionSeg" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[Disposicion]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[Disposicion]"
+                      name="Disposicion" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[EsVenta]"
+                      dataType="bool"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[EsVenta]"
+                      name="EsVenta" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[EsVentaInconsistente]"
+                      dataType="bool"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[EsVentaInconsistente]"
+                      name="EsVentaInconsistente" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[MotivoDescarte]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[MotivoDescarte]"
+                      name="MotivoDescarte" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\FACT LLAMADA.Paths[bad]"
+              endId="Package\FACT LLAMADA\Columna derivada Motivo.Inputs[Entrada de columna derivada]"
+              name="bad"
+              startId="Package\FACT LLAMADA\División condicional.Outputs[bad]" />
+            <path
+              refId="Package\FACT LLAMADA.Paths[Salida de columna derivada]"
+              endId="Package\FACT LLAMADA\ErrorFactLlamada.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\FACT LLAMADA\Columna derivada Motivo.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\FACT LLAMADA.Paths[Salida de entradas coincidentes de búsqueda2]"
+              endId="Package\FACT LLAMADA\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\FACT LLAMADA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\FACT LLAMADA.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\FACT LLAMADA\DimVendedor.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\FACT LLAMADA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\FACT LLAMADA.Paths[Salida de entradas coincidentes de búsqueda1]"
+              endId="Package\FACT LLAMADA\DimCliente.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\FACT LLAMADA\DimVendedor.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\FACT LLAMADA.Paths[Salida de origen de OLE DB]"
+              endId="Package\FACT LLAMADA\DimFecha.Inputs[Entrada de búsqueda]"
+              name="Salida de origen de OLE DB"
+              startId="Package\FACT LLAMADA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\FACT LLAMADA.Paths[Salida predeterminada de división condicional]"
+              endId="Package\FACT LLAMADA\FactLlamada.Inputs[Entrada de destino de OLE DB]"
+              name="Salida predeterminada de división condicional"
+              startId="Package\FACT LLAMADA\División condicional.Outputs[Salida predeterminada de división condicional]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Get AuditKey"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{D6C77CF7-52E5-4638-835D-BAE20E603697}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Get AuditKey"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="INSERT INTO [DIM_AUDIT]&#xA;           ([TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[SuccessfulProcessingInd])&#xA;     VALUES&#xA;           (@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@StartTime&#xA;           ,NULL&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,@RowCount&#xA;           ,NULL&#xA;           ,'N')&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Post RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{BE78FA3A-BC8B-49F2-9080-EFA7A943CC46}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Post RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [Comercial].[FactLlamada]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Prior RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{1CACC678-8B90-4644-B1B2-430E4B0DCBBB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Prior RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [Comercial].[FactLlamada]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{8BBE4C3F-C380-4E82-9815-75DE5A2F240D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [Comercial].[FactLlamada];&#xA;TRUNCATE TABLE [Comercial].[ErrorFactLlamada];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update AuditDim"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{00B8B2AD-C5A9-4D89-BB78-E7D332B9AFA3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update AuditDim"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="UPDATE [DIM_AUDIT]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RowCount&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,SuccessfulProcessingInd='Y'&#xA;WHERE AuditKey = @AuditKey;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{09F43A8A-7DBD-4F2F-9009-6A235A5B589C\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{09F43A8A-7DBD-4F2F-9009-6A235A5B589C}"
+      DTS:From="Package\FACT LLAMADA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{09F43A8A-7DBD-4F2F-9009-6A235A5B589C}"
+      DTS:To="Package\Task Post RowCnt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{16D9D98A-B181-49F4-ACF8-E7F864FAA8C3\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{16D9D98A-B181-49F4-ACF8-E7F864FAA8C3}"
+      DTS:From="Package\Task Post RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{16D9D98A-B181-49F4-ACF8-E7F864FAA8C3}"
+      DTS:To="Package\Update AuditDim" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{2887D485-832E-41A1-A206-7D2A691F172E\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{2887D485-832E-41A1-A206-7D2A691F172E}"
+      DTS:From="Package\Task Get AuditKey"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{2887D485-832E-41A1-A206-7D2A691F172E}"
+      DTS:To="Package\TRUNCATE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{620872AF-6213-4957-BB1C-15BFAFC8748F\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{620872AF-6213-4957-BB1C-15BFAFC8748F}"
+      DTS:From="Package\Task Prior RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{620872AF-6213-4957-BB1C-15BFAFC8748F}"
+      DTS:To="Package\Task Get AuditKey" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{C6F8823D-87FA-488F-9050-F7D898BB29F5\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{C6F8823D-87FA-488F-9050-F7D898BB29F5}"
+      DTS:From="Package\TRUNCATE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{C6F8823D-87FA-488F-9050-F7D898BB29F5}"
+      DTS:To="Package\FACT LLAMADA" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

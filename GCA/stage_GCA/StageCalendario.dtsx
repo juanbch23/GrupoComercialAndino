@@ -1,0 +1,741 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/22/2026 9:11:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-IO596P6A"
+  DTS:CreatorName="LAPTOP-IO596P6A\Juan"
+  DTS:DTSID="{19EA495E-4FAA-4723-BD15-7A39FCCE52C4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1000.7"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="StageCalendario"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{F0091B8E-DA88-4726-9AD2-C4798A41FD30}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D9F4EC64-08E7-4994-A0A9-0BF1DF8060FB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7D111A1B-7794-4273-90E5-30B76245AD7C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{99BA3B8C-649E-4B1E-B72C-84C4BD1AC8E5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">[GCA].[StageCalendario]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF StageCalendario"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{7DB4EC5D-DDB5-4242-A3F3-AF4E19A29023}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF StageCalendario"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          autoAdjustBufferSize="true"
+          version="1">
+          <components>
+            <component
+              refId="Package\DF StageCalendario\Origen de archivo plano"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Origen de archivo plano;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de archivo plano"
+              localeId="1033"
+              name="Origen de archivo plano"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Especifica si las columnas de longitud cero se tratan como NULL."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre de una columna de salida que contiene el nombre de archivo. Si no se especifica ningún nombre, no se genera ninguna columna de salida con el nombre de archivo."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF StageCalendario\Origen de archivo plano.Connections[FlatFileConnection]"
+                  connectionManagerID="{E201D1C2-05B4-4B1C-810F-3055051489FB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[FF Calendario]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano]"
+                  name="Salida de origen de archivo plano">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fecha]"
+                      length="20"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha]"
+                      name="fecha"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[anio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[anio]"
+                      length="10"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[anio]"
+                      name="anio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[mes]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[mes]"
+                      length="10"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[mes]"
+                      name="mes"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[trimestre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[trimestre]"
+                      length="10"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[trimestre]"
+                      name="trimestre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[dia_semana]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[dia_semana]"
+                      length="10"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[dia_semana]"
+                      name="dia_semana"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[es_fin_semana]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[es_fin_semana]"
+                      length="10"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[es_fin_semana]"
+                      name="es_fin_semana"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[periodo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[periodo]"
+                      length="10"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[periodo]"
+                      name="periodo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fase]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fase]"
+                      length="20"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fase]"
+                      name="fase"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si la columna usa las rutinas de análisis más rápidas independientes de la configuración regional."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indica si los datos están en formato binario."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fecha]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[anio]"
+                      dataType="wstr"
+                      length="10"
+                      name="anio" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[mes]"
+                      dataType="wstr"
+                      length="10"
+                      name="mes" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[trimestre]"
+                      dataType="wstr"
+                      length="10"
+                      name="trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[dia_semana]"
+                      dataType="wstr"
+                      length="10"
+                      name="dia_semana" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[es_fin_semana]"
+                      dataType="wstr"
+                      length="10"
+                      name="es_fin_semana" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[periodo]"
+                      dataType="wstr"
+                      length="10"
+                      name="periodo" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].ExternalColumns[fase]"
+                      dataType="wstr"
+                      length="20"
+                      name="fase" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de archivo plano">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Columna de salida de error de origen de archivo plano"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[Columna de salida de error de origen de archivo plano]"
+                      name="Columna de salida de error de origen de archivo plano" />
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de error de origen de archivo plano].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF StageCalendario\StageCalendario"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="StageCalendario"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[GCA].[StageCalendario]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF StageCalendario\StageCalendario.Connections[OleDbConnection]"
+                  connectionManagerID="{63ACD6B7-1E83-49B7-ABCF-D5B56AED4DE9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB STAGE_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].Columns[fecha]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fecha]" />
+                    <inputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].Columns[anio]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="anio"
+                      externalMetadataColumnId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[anio]"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[anio]" />
+                    <inputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].Columns[mes]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="mes"
+                      externalMetadataColumnId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[mes]"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[mes]" />
+                    <inputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].Columns[trimestre]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="trimestre"
+                      externalMetadataColumnId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[trimestre]"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[trimestre]" />
+                    <inputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].Columns[dia_semana]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="dia_semana"
+                      externalMetadataColumnId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[dia_semana]"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[dia_semana]" />
+                    <inputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].Columns[es_fin_semana]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="es_fin_semana"
+                      externalMetadataColumnId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[es_fin_semana]"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[es_fin_semana]" />
+                    <inputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].Columns[periodo]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="periodo"
+                      externalMetadataColumnId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[periodo]"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[periodo]" />
+                    <inputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].Columns[fase]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fase"
+                      externalMetadataColumnId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[fase]"
+                      lineageId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano].Columns[fase]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[anio]"
+                      dataType="wstr"
+                      length="10"
+                      name="anio" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[mes]"
+                      dataType="wstr"
+                      length="10"
+                      name="mes" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[trimestre]"
+                      dataType="wstr"
+                      length="10"
+                      name="trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[dia_semana]"
+                      dataType="wstr"
+                      length="10"
+                      name="dia_semana" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[es_fin_semana]"
+                      dataType="wstr"
+                      length="10"
+                      name="es_fin_semana" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[periodo]"
+                      dataType="wstr"
+                      length="10"
+                      name="periodo" />
+                    <externalMetadataColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB].ExternalColumns[fase]"
+                      dataType="wstr"
+                      length="20"
+                      name="fase" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF StageCalendario\StageCalendario.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF StageCalendario\StageCalendario.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF StageCalendario\StageCalendario.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF StageCalendario\StageCalendario.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF StageCalendario.Paths[Salida de origen de archivo plano]"
+              endId="Package\DF StageCalendario\StageCalendario.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de archivo plano"
+              startId="Package\DF StageCalendario\Origen de archivo plano.Outputs[Salida de origen de archivo plano]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Get AuditKey"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{38B7883C-237A-4C41-AF8A-E20B76B978BB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Get AuditKey"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EBE8FE70-4E87-4D08-AA38-6649A2F98D77}"
+          SQLTask:SqlStatementSource="INSERT INTO [DIM_AUDIT]&#xA;           ([TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[SuccessfulProcessingInd])&#xA;     VALUES&#xA;           (@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@StartTime&#xA;           ,NULL&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,@RowCount&#xA;           ,NULL&#xA;           ,'N')&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Post RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{2CE08ADD-5C1C-42D5-8E25-98944F93A0C4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Post RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [GCA].[StageCalendario]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Prior RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{057998CA-DB65-452F-81A3-1095B9CF0153}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Prior RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [GCA].[StageCalendario]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{30B8DACC-67F6-4EFC-B732-50F35BF170CA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D3970875-3B2C-4E18-AFCA-FCA554AD5042}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [GCA].[StageCalendario];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update AuditDim"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{AB7CC009-1B13-4BCD-953E-525421D1F04B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update AuditDim"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EBE8FE70-4E87-4D08-AA38-6649A2F98D77}"
+          SQLTask:SqlStatementSource="UPDATE [DIM_AUDIT]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RowCount&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,SuccessfulProcessingInd='Y'&#xA;WHERE AuditKey = @AuditKey;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{080C7753-99D7-4D21-BD22-F55CDF9B8C91\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{080C7753-99D7-4D21-BD22-F55CDF9B8C91}"
+      DTS:From="Package\TRUNCATE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{080C7753-99D7-4D21-BD22-F55CDF9B8C91}"
+      DTS:To="Package\DF StageCalendario" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{55E48068-46B6-4BC6-BDAB-856170C1A63E\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{55E48068-46B6-4BC6-BDAB-856170C1A63E}"
+      DTS:From="Package\DF StageCalendario"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{55E48068-46B6-4BC6-BDAB-856170C1A63E}"
+      DTS:To="Package\Task Post RowCnt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{E2A8D331-D5C6-4833-8AE6-546915A4FBAB\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2A8D331-D5C6-4833-8AE6-546915A4FBAB}"
+      DTS:From="Package\Task Post RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{E2A8D331-D5C6-4833-8AE6-546915A4FBAB}"
+      DTS:To="Package\Update AuditDim" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{E2ABDD17-3E97-48AC-BC0E-166BF7C7DD96\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2ABDD17-3E97-48AC-BC0E-166BF7C7DD96}"
+      DTS:From="Package\Task Get AuditKey"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{E2ABDD17-3E97-48AC-BC0E-166BF7C7DD96}"
+      DTS:To="Package\TRUNCATE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{F7E3286E-2A77-4025-9819-E163572D7E14\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{F7E3286E-2A77-4025-9819-E163572D7E14}"
+      DTS:From="Package\Task Prior RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{F7E3286E-2A77-4025-9819-E163572D7E14}"
+      DTS:To="Package\Task Get AuditKey" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

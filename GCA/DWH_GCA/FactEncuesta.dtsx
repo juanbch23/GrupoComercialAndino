@@ -1,0 +1,1450 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/22/2026 9:12:25 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-IO596P6A"
+  DTS:CreatorName="LAPTOP-IO596P6A\Juan"
+  DTS:DTSID="{73E7F090-6653-4DD8-9A88-E1E411E4F7EE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1000.7"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="FactEncuesta"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{DC90C8CC-3E89-4C3E-97B6-EB9EBBD5CAA4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2BD3DAF1-19C6-4556-B37C-ADEF2F830EBD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F90A2131-4050-4CE0-9BD5-FF582CB6E017}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{641D1281-0BA1-406A-AF7C-FDCD2FABBD63}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">[Comercial].[FactEncuesta]</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FACT ENCUESTA"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{A1E8698D-8A59-4D74-AE6B-1A84856B5677}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FACT ENCUESTA"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          autoAdjustBufferSize="true"
+          version="1">
+          <components>
+            <component
+              refId="Package\FACT ENCUESTA\Columna derivada Motivo"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Columna derivada Motivo"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FACT ENCUESTA\Columna derivada Motivo.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\Columna derivada Motivo.Inputs[Entrada de columna derivada].Columns[MotivoDescarte]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="MotivoDescarte"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\FACT ENCUESTA\Columna derivada Motivo.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]"
+                      dataType="wstr"
+                      description="Motivo del descarte"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]"
+                      name="Motivo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[ISNULL](#{Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}) ? (DT_WSTR,200)"Llave sin coincidencia en una dimensión" : #{Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(MotivoDescarte) ? (DT_WSTR,200)"Llave sin coincidencia en una dimensión" : MotivoDescarte</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\FACT ENCUESTA\Columna derivada Motivo.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT ENCUESTA\DimCliente"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="DimCliente"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ClienteKey], [ClienteID] FROM [Comercial].[DimCliente] WHERE [ClienteKey] &gt; 0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ClienteKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ClienteID" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT ENCUESTA\DimCliente.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT ENCUESTA\DimCliente.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\DimCliente.Inputs[Entrada de búsqueda].Columns[cliente_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="cliente_id"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">ClienteID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT ENCUESTA\DimCliente.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]"
+                      name="ClienteKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">ClienteKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT ENCUESTA\DimCliente.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\FACT ENCUESTA\DimCliente.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT ENCUESTA\DimFecha"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
+              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
+              name="DimFecha"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [FechaKey] FROM [GENERICO].[DimFecha] WHERE [FechaKey] &gt; 0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el tipo de caché de la tabla de búsqueda."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indica si se debe hacer referencia a metadatos en formato XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="FechaKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
+                  name="ParameterMap"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT ENCUESTA\DimFecha.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT ENCUESTA\DimFecha.Inputs[Entrada de búsqueda]"
+                  name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\DimFecha.Inputs[Entrada de búsqueda].Columns[FechaNum]"
+                      cachedDataType="i4"
+                      cachedName="FechaNum"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">FechaKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda]"
+                  errorOrTruncationOperation="Búsqueda"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Salida de entradas coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT ENCUESTA\DimFecha.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]"
+                      name="FechaKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">FechaKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas no coincidentes de búsqueda]"
+                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en &quot;Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes&quot;."
+                  exclusionGroup="1"
+                  name="Salida de entradas no coincidentes de búsqueda"
+                  synchronousInputId="Package\FACT ENCUESTA\DimFecha.Inputs[Entrada de búsqueda]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de error de búsqueda]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de búsqueda"
+                  synchronousInputId="Package\FACT ENCUESTA\DimFecha.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT ENCUESTA\División condicional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="División condicional;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Enruta filas de datos a diferentes salidas según el contenido de los datos. Se usan condiciones (expresiones de SSIS) para especificar las filas que se van a enrutar. Por ejemplo, se usa para separar los registros que deben limpiarse de los registros listos para ser cargados o para enrutar solamente un subconjunto de registros."
+              name="División condicional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FACT ENCUESTA\División condicional.Inputs[Entrada de división condicional]"
+                  description="Entrada en la transformación División condicional"
+                  name="Entrada de división condicional">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\División condicional.Inputs[Entrada de división condicional].Columns[MotivoDescarte]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="MotivoDescarte"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\División condicional.Inputs[Entrada de división condicional].Columns[FechaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaKey"
+                      lineageId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\División condicional.Inputs[Entrada de división condicional].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      lineageId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT ENCUESTA\División condicional.Outputs[bad]"
+                  description="Filas descartadas por limpieza o con alguna llave sin coincidencia"
+                  errorOrTruncationOperation="Cálculo"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="bad"
+                  synchronousInputId="Package\FACT ENCUESTA\División condicional.Inputs[Entrada de división condicional]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la expresión. Esta versión de expresión usa identificadores de linaje en lugar de nombres de columna."
+                      name="Expression">![ISNULL](#{Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]}) || [ISNULL](#{Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]}) || [ISNULL](#{Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Especifica la versión descriptiva de la expresión. Esta versión de expresión usa nombres de columna."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(MotivoDescarte) || ISNULL(FechaKey) || ISNULL(ClienteKey)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la posición de la condición en la lista de condiciones que evalúa la transformación. El orden de evaluación es del menor al mayor valor."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT ENCUESTA\División condicional.Outputs[Salida predeterminada de división condicional]"
+                  description="Salida predeterminada de la transformación División condicional"
+                  exclusionGroup="1"
+                  name="Salida predeterminada de división condicional"
+                  synchronousInputId="Package\FACT ENCUESTA\División condicional.Inputs[Entrada de división condicional]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FACT ENCUESTA\División condicional.Outputs[Salida de error de división condicional]"
+                  description="Salida de error de la transformación División condicional"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de división condicional"
+                  synchronousInputId="Package\FACT ENCUESTA\División condicional.Inputs[Entrada de división condicional]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\División condicional.Outputs[Salida de error de división condicional].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT ENCUESTA\ErrorFactEncuesta"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="ErrorFactEncuesta"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Comercial].[ErrorFactEncuesta]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[FilaOrigen]"
+                      cachedDataType="i4"
+                      cachedName="FilaOrigen"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[encuesta_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="encuesta_id"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[encuesta_id]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[encuesta_id]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[fecha]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="fecha"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[cliente_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="cliente_id"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[FechaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaKey"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaKey]"
+                      lineageId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      lineageId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[Motivo]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Motivo"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[Motivo]"
+                      lineageId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de columna derivada].Columns[Motivo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[encuesta_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="encuesta_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[fecha]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaKey]"
+                      dataType="i4"
+                      name="FechaKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[Motivo]"
+                      dataType="wstr"
+                      length="200"
+                      name="Motivo" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaRegistro]"
+                      dataType="dbTimeStamp"
+                      name="FechaRegistro" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\ErrorFactEncuesta.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\ErrorFactEncuesta.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\ErrorFactEncuesta.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT ENCUESTA\FactEncuesta"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="FactEncuesta"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[Comercial].[FactEncuesta]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Sólo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT ENCUESTA\FactEncuesta.Connections[OleDbConnection]"
+                  connectionManagerID="{F91CCF0B-D0FA-452B-83E9-BE0AE37008ED}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB DWH_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[EncuestaID]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="EncuestaID"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[EncuestaID]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EncuestaID]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[Momento]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Momento"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[Momento]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Momento]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[NPS]"
+                      cachedDataType="i4"
+                      cachedName="NPS"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[NPS]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[NPS]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[CSAT]"
+                      cachedDataType="numeric"
+                      cachedName="CSAT"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[CSAT]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[CSAT]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[FechaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaKey"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaKey]"
+                      lineageId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda].Columns[FechaKey]" />
+                    <inputColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      lineageId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ClienteKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[EncuestaID]"
+                      dataType="wstr"
+                      length="20"
+                      name="EncuestaID" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaKey]"
+                      dataType="i4"
+                      name="FechaKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[Momento]"
+                      dataType="wstr"
+                      length="30"
+                      name="Momento" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[NPS]"
+                      dataType="i4"
+                      name="NPS" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB].ExternalColumns[CSAT]"
+                      dataType="numeric"
+                      name="CSAT"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FACT ENCUESTA\FactEncuesta.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\FactEncuesta.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\FactEncuesta.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\FactEncuesta.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen de OLE DB (limpieza)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH S AS (
+    SELECT e.*, COALESCE(TRY_CONVERT(DATE, e.[fecha], 23), TRY_CONVERT(DATE, e.[fecha], 103)) AS [FechaD],
+           ROW_NUMBER() OVER (PARTITION BY e.[encuesta_id] ORDER BY e.[FilaOrigen]) AS [rnId]
+      FROM [GCA].[StageEncuesta] e)
+SELECT [FilaOrigen], [encuesta_id], [fecha], [cliente_id],
+       [encuesta_id] AS [EncuestaID],
+       CONVERT(INT, CONVERT(CHAR(8), [FechaD], 112)) AS [FechaNum],
+       CAST(LTRIM(RTRIM([momento])) AS NVARCHAR(30)) AS [Momento],
+       TRY_CONVERT(INT, [nps]) AS [NPS], TRY_CONVERT(DECIMAL(5,2), [csat]) AS [CSAT],
+       CAST(CASE WHEN [rnId] &gt; 1 THEN N'Duplicado exacto: encuesta_id repetido (se conservó la primera aparición)'
+                 WHEN [FechaD] IS NULL THEN N'Fecha inválida'
+                 WHEN TRY_CONVERT(INT, [nps]) NOT BETWEEN -100 AND 100 THEN N'NPS fuera de rango (-100..100)'
+                 WHEN TRY_CONVERT(DECIMAL(5,2), [csat]) NOT BETWEEN 1 AND 5 THEN N'CSAT fuera de rango (1..5)'
+            END AS NVARCHAR(200)) AS [MotivoDescarte]
+  FROM S</property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Connections[OleDbConnection]"
+                  connectionManagerID="{C367306B-32DC-45CB-9924-5BE02CFDB88F}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OleDB STAGE_GCA]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FilaOrigen]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FilaOrigen]"
+                      name="FilaOrigen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[encuesta_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[encuesta_id]"
+                      length="20"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[encuesta_id]"
+                      name="encuesta_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      length="20"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[fecha]"
+                      name="fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_id]"
+                      length="20"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[cliente_id]"
+                      name="cliente_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EncuestaID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[EncuestaID]"
+                      length="20"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[EncuestaID]"
+                      name="EncuestaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FechaNum]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[FechaNum]"
+                      name="FechaNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Momento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[Momento]"
+                      length="30"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[Momento]"
+                      name="Momento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[NPS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[NPS]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[NPS]"
+                      name="NPS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[CSAT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[CSAT]"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[CSAT]"
+                      name="CSAT"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[MotivoDescarte]"
+                      length="200"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].Columns[MotivoDescarte]"
+                      name="MotivoDescarte"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FilaOrigen]"
+                      dataType="i4"
+                      name="FilaOrigen" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[encuesta_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="encuesta_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[fecha]"
+                      dataType="wstr"
+                      length="20"
+                      name="fecha" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[EncuestaID]"
+                      dataType="wstr"
+                      length="20"
+                      name="EncuestaID" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[FechaNum]"
+                      dataType="i4"
+                      name="FechaNum" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[Momento]"
+                      dataType="wstr"
+                      length="30"
+                      name="Momento" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[NPS]"
+                      dataType="i4"
+                      name="NPS" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[CSAT]"
+                      dataType="numeric"
+                      name="CSAT"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB].ExternalColumns[MotivoDescarte]"
+                      dataType="wstr"
+                      length="200"
+                      name="MotivoDescarte" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FilaOrigen]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FilaOrigen]"
+                      name="FilaOrigen" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[encuesta_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[encuesta_id]"
+                      name="encuesta_id" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[fecha]"
+                      name="fecha" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[cliente_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[cliente_id]"
+                      name="cliente_id" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[EncuestaID]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[EncuestaID]"
+                      name="EncuestaID" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FechaNum]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[FechaNum]"
+                      name="FechaNum" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[Momento]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[Momento]"
+                      name="Momento" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[NPS]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[NPS]"
+                      name="NPS" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[CSAT]"
+                      dataType="numeric"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[CSAT]"
+                      name="CSAT"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[MotivoDescarte]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[MotivoDescarte]"
+                      name="MotivoDescarte" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\FACT ENCUESTA.Paths[bad]"
+              endId="Package\FACT ENCUESTA\Columna derivada Motivo.Inputs[Entrada de columna derivada]"
+              name="bad"
+              startId="Package\FACT ENCUESTA\División condicional.Outputs[bad]" />
+            <path
+              refId="Package\FACT ENCUESTA.Paths[Salida de columna derivada]"
+              endId="Package\FACT ENCUESTA\ErrorFactEncuesta.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\FACT ENCUESTA\Columna derivada Motivo.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\FACT ENCUESTA.Paths[Salida de entradas coincidentes de búsqueda1]"
+              endId="Package\FACT ENCUESTA\División condicional.Inputs[Entrada de división condicional]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\FACT ENCUESTA\DimCliente.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\FACT ENCUESTA.Paths[Salida de entradas coincidentes de búsqueda]"
+              endId="Package\FACT ENCUESTA\DimCliente.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\FACT ENCUESTA\DimFecha.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\FACT ENCUESTA.Paths[Salida de origen de OLE DB]"
+              endId="Package\FACT ENCUESTA\DimFecha.Inputs[Entrada de búsqueda]"
+              name="Salida de origen de OLE DB"
+              startId="Package\FACT ENCUESTA\Origen de OLE DB (limpieza).Outputs[Salida de origen de OLE DB]" />
+            <path
+              refId="Package\FACT ENCUESTA.Paths[Salida predeterminada de división condicional]"
+              endId="Package\FACT ENCUESTA\FactEncuesta.Inputs[Entrada de destino de OLE DB]"
+              name="Salida predeterminada de división condicional"
+              startId="Package\FACT ENCUESTA\División condicional.Outputs[Salida predeterminada de división condicional]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Get AuditKey"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{57C019A6-8AA2-4CE6-B22F-3CEB34D4EDEF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Get AuditKey"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="INSERT INTO [DIM_AUDIT]&#xA;           ([TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[SuccessfulProcessingInd])&#xA;     VALUES&#xA;           (@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@StartTime&#xA;           ,NULL&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,@RowCount&#xA;           ,NULL&#xA;           ,'N')&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Post RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{54481336-5725-419E-B936-B8F02403630B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Post RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [Comercial].[FactEncuesta]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Task Prior RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{3FDD0235-3598-4932-87F9-E67FB7C919A2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Task Prior RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS RowCnt FROM [Comercial].[FactEncuesta]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{A21B7A67-8B17-483F-AE42-16DE90FF4B19}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [Comercial].[FactEncuesta];&#xA;TRUNCATE TABLE [Comercial].[ErrorFactEncuesta];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update AuditDim"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{510E2410-7F5F-4110-BA7A-EA59AD8C485A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update AuditDim"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EABDD6E6-8EC4-406B-B2C8-90E16E3D60E6}"
+          SQLTask:SqlStatementSource="UPDATE [DIM_AUDIT]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RowCount&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,SuccessfulProcessingInd='Y'&#xA;WHERE AuditKey = @AuditKey;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{0E865F7D-C9B4-47EF-87CA-0B97C141583E\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{0E865F7D-C9B4-47EF-87CA-0B97C141583E}"
+      DTS:From="Package\Task Get AuditKey"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{0E865F7D-C9B4-47EF-87CA-0B97C141583E}"
+      DTS:To="Package\TRUNCATE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{248D41E3-87B3-4E50-BF82-66B92BFE7117\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{248D41E3-87B3-4E50-BF82-66B92BFE7117}"
+      DTS:From="Package\Task Post RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{248D41E3-87B3-4E50-BF82-66B92BFE7117}"
+      DTS:To="Package\Update AuditDim" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{6F95175C-B09B-4BF7-839B-5FD3BB2F7769\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{6F95175C-B09B-4BF7-839B-5FD3BB2F7769}"
+      DTS:From="Package\TRUNCATE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{6F95175C-B09B-4BF7-839B-5FD3BB2F7769}"
+      DTS:To="Package\FACT ENCUESTA" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{ABF6DB55-20A1-4909-8E99-30F7F9E6EDBD\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{ABF6DB55-20A1-4909-8E99-30F7F9E6EDBD}"
+      DTS:From="Package\FACT ENCUESTA"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{ABF6DB55-20A1-4909-8E99-30F7F9E6EDBD}"
+      DTS:To="Package\Task Post RowCnt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{B049AB26-1042-4CF7-829A-A09146899A5E\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{B049AB26-1042-4CF7-829A-A09146899A5E}"
+      DTS:From="Package\Task Prior RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{B049AB26-1042-4CF7-829A-A09146899A5E}"
+      DTS:To="Package\Task Get AuditKey" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

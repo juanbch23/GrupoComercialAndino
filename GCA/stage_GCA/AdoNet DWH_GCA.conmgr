@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="AdoNet DWH_GCA"
+  DTS:DTSID="{EBE8FE70-4E87-4D08-AA38-6649A2F98D77}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=LAPTOP-IO596P6A\DEV;Initial Catalog=DWH_GCA;Integrated Security=True;TrustServerCertificate=True;Application Name=SSIS-GCA;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
